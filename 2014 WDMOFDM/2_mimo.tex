@@ -1,0 +1,59 @@
+\section{Optical MIMO Channel}\label{sec:mimo}
+This section provides an introduction to an optical MIMO channel that can be established between multiple optical transmitting and receiving elements. Information over an optical channel is usually transmitted using intensity-modulation direct-detection (IM/DD). At the transmitting elements, information is modulated over the intensity of emitted light or radiant flux. Since output light intensity from a radiating source must be non-negative, the transmitted signals must be constrained to non-negative values. Multiple transmitting elements can be established over dimensions such as space, time, frequency, wavelength, polarization, and others. Each receiving element must produce an output electrical signal that is proportional to the radiant flux, from the dimension of interest, incident on it. Each parallel link must be sufficiently decorrelated with enough signal to interference and noise ratio (SINR) to meet the target bit error rate (BER). 
+
+A typical optical MIMO channel can be modeled as a linear time invariant system and be represented as
+\begin{equation}
+	\label{eqMIMOch}
+	\vm{Y} = \vm{H}\vm{X} + \vm{W}
+\end{equation}
+$\vm{X}$ is an $N_{tx}$ dimensional vector. Each element of $\vm{X}$ represents the radiant flux emitted by each transmitting element. $\vm{Y}$ is an $N_{rx}$ dimensional vector. Each element of $\vm{Y}$ represents the signal output from each receiving element. $\vm{H}$ is an $N_{rx}\times N_{tx}$ dimensional channel matrix. Each element $h_{ij}\in \vm{H};$ $i\in \{1,2,\dots, N_{rx}\},$ $j\in \{1,2,\dots, N_{tx}\}$ represents the conversion factor for signal output from the $i^{th}$ receiving element when radiant flux from $j^{th}$ transmitting element is incident on it after including the path losses. $\vm{W}$ is an $N_{rx}$ dimensional noise vector. It is typically modeled as additive white Gaussian noise independent of transmitted vector $\vm{X}$ i.e. $\vm{W}\sim\mathcal{N}({\bf{0}},\sigma_n^2\vm{I}_{N_{rx}})$.
+
+The amount of radiant flux per solid angle emitted by the $j^{th}$ transmitting element in a certain angular direction $\phi$ is given by the angular radiant intensity distribution. An LED's radiant intensity distribution is usually characterized by a Lambertian distribution given by
+\begin{equation}
+	\label{eqLamb}
+	L_j(m,\phi) = \twopartdef{{\frac{(m+1)}{2\pi}}cos^{m}(\phi)}{-\pi/2\leq\phi\leq\pi/2}{0}{\mbox{ else}}
+\end{equation}
+If $\Phi$ is the emission angle at which radiant intensity of a transmitting element is half its peak value (at $\psi=0^\circ$), the Lambertian order of that emission is $m=-ln(2)/ln(cos(\Phi_{j}))$.
+
+A photodiode is a device that produces an electrical signal output that is proportional to the radiant flux incident on it. Photodiodes with larger active area can collect greater flux and thus output a larger signal. On the other hand, a large area photodiode offers a larger capacitance and thus reduces the signal bandwidth that can be received without distortion. Additionally, this also reduces the number of photodiodes that can be packed together to form a multi-element receiving array within a given area budget on a portable device. The photodiode effective area can be increased by using optics. Concentrator optics may be used for each photodiode element in non-imaging receiver arrays. The area gain provided by concentrator optics on the $i^{th}$ receiving element is given by
+\begin{equation}
+	\label{eqGain}
+	G_i(\psi) = \twopartdef{\frac{\eta_i^2}{sin^2(\Psi_{i})}} {0\leq\psi\leq\Psi_{i}\leq\frac{\pi}{2}}{0}{\psi>\Psi_{i}}
+\end{equation}
+where $\psi$ is the angle of incidence of the incident flux, $\eta$ is the refractive index of the material that the optics are made of, and $\Psi_i$ is the field of view of the $i^{th}$ concentrator.
+
+Optical filters may be used at the receiver to acquire only the wavelengths of interest while rejecting the ambient radiation. Depending on the type of filter used, its transmittance may be a function of the angle of incidence $\psi$. Let $T_i(\psi,\lambda)$ be the transmittance of the $i^{th}$ optical filter. If $S(\lambda)$ is the normalized spectral power distribution (SPD) of incident radiation and $R_i(\lambda)$ is the responsivity of the $i_{th}$ receiving photodiode, the effective responsivity of the $i^{th}$ receiving element is given by
+\begin{equation}
+	\label{eqReff}
+	R_{e_i}(\psi) = G_i(\psi)\int^{\lambda_{max}}_{\lambda_{min}}S(\lambda)T_i(\psi,\lambda)R_i(\lambda)d\lambda
+\end{equation}
+
+Let $\vm{d}_{ij}$ be the vector from receiving element $i$ to transmitting element $j$. The distance between the two is then given by $||\vm{d}_{ij}||^2$. Let $A_i$ be the active area of the photodiode. The channel gain from transmitting element $j$ to receiving element $i$ is given by
+\begin{equation}
+	\label{eqChGain}
+	h_{ij} = L_{m_j}(\phi_{ij})\frac{A_i}{||\vm{d}_{ij}||^{2}}cos(\psi_{ij})R_{e_i}(\psi_{ij})
+\end{equation}
+where $m_j$ is the Lambertian order of the $j^{th}$ transmitting element, and $\phi_{ij}$ and $\psi_{ij}$ are the angles subtended between vector $\vm{d}_{ij}$ and surface normals respectively of the $j^{th}$ transmitting and $i^{th}$ receiving elements.
+
+Ambient light incident on a photodiode generates shot noise. Let $P_a(\lambda)$ be SPD of isotropic ambient light. This would generate shot noise in the $i^{th}$ receiving element with variance
+\begin{equation}
+	\label{eqNshot}
+	\sigma_{sh_i}^{2} = \frac{2qA_iG_i(\Psi_i)}{\Psi_i}\int_{\lambda_{min}}^{\lambda_{max}}\int_{0}^{\Psi_i}P_{a}(\lambda)T_i(\psi,\lambda)R_i(\lambda)d\psi d\lambda
+\end{equation}
+where $q=1.6\times 10^{-19}$ C is the charge of an electron. Shot noise statistics are typically modeled as a Poisson distribution. 
+
+A trans-impedance amplifier (TIA) is most often used as the first stage amplifier. Thermal noise is the most dominant component of TIA electrical noise. The thermal noise variance in the $i^{th}$ receiving element is given by
+\begin{equation}
+	\label{eqNth}
+	\sigma_{th_i}^{2} = \frac{4kT_i}{R_{f_i}}
+\end{equation}
+where constant $k$ is Boltzmann constant, $T_i$ is the absolute temperature and $R_{f_i}$ is the TIA feedback resistance. Thermal noise statistics are typically modeled as a Gaussian distribution.
+
+Total input referred noise variance is usually approximated as the sum of shot noise variance and thermal noise variance.  For sake of mathematical simplicity, total noise is assumed to have Gaussian statistics with mean $0$ and variance $\sigma_{n_i}^{2} = \sigma_{sh_i}^{2} + \sigma_{th_i}^{2}$.
+
+In VLC, transmitting elements perform dual function of providing wireless data transmission while maintaining illumination levels. To perform a fair comparison between different modulation systems operating at same illumination levels needs a different definition of SNR. In this work, SNR is defined as the ratio of the average transmitted electrical power to noise power and is similar as in \cite{fat13a}. 
+\begin{equation}
+	\label{eqSNR}
+	SNR^{tx}_{avg} = \frac{(hP_{avg}^{tx})^2}{\sigma_n^{2}}
+\end{equation}
+where $P_{avg}^{tx}$ is the average radiant flux emitted by a transmitter, $h$ is the optical to electrical conversion factor $(AW^{-1}\Omega^{-2})$ and $\sigma_n^{2}$ is the noise power.

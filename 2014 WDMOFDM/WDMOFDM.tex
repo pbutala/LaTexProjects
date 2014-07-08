@@ -1,48 +1,50 @@
-\documentclass{sig-alternate} % downloaded file http://www.sigmobile.org/mobicom/2014/sig-alternate-10pt.cls
-
-\newcommand{\rmnum}[1]{\romannumeral #1}
-\newcommand{\Rmnum}[1]{\MakeUppercase{\romannumeral #1}}
-\newcommand{\vect}[1]{\overline {#1}}
-\newcommand{\vm}[1]{{\bf{#1}}}
-\newcommand{\argmin}{\operatornamewithlimits{argmin}}
-\newcommand{\argmax}{\operatornamewithlimits{argmax}}
-\newcommand{\idxmin}{\operatornamewithlimits{idxmin}}
-\newcommand{\idxmax}{\operatornamewithlimits{idxmax}}
-\newcommand{\twopartdef}[4]
-{
-	\left\{
-		\begin{array}{ll}
-			#1 &; #2 \\
-			#3 &; #4
-		\end{array}
-	\right.
-}
-
+\documentclass[conference]{IEEEtran}
+\input{__Setup}
 \begin{document}
-\title{On the performance of optical wavelength and orthogonal frequency division multiplexing}
-%\author{Pankil M. Butala, Hany Elgala, Payman Zarkesh-Ha, Thomas D.C. Little}
+% 
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Multi-Wavelength Visible Light Communication System Design}
+
+
+% author names and affiliations
+% use a multiple column layout for up to two different
+% affiliations
+
+\author{\IEEEauthorblockN{Pankil M. Butala, Hany Elgala, Thomas D.C. Little}
+\IEEEauthorblockA{Department of Electrical and Computer Engineering\\
+Boston University, Boston, MA, USA\\
+\{pbutala, helgala, tdcl\}@bu.edu}
+ %Payman Zarkesh-Ha, Thomas D.C. Little}
+\and
+\IEEEauthorblockN{Payman Zarkesh-Ha}
+\IEEEauthorblockA{Department of Electrical and Computer Engineering\\
+University of New Mexico, Albuquerque, NM, USA\\
+payman@ece.unm.edu}}
+
+% make the title area
 \maketitle
 
-% abstract
-\begin{abstract}
-\input{abstract.tex}
-\end{abstract}
+\input{abstract}
 
+\begin{IEEEkeywords}
+Visible Light Communications (VLC), Optical Wireless Communications (OWC), Multiple Input Multiple Output (MIMO), Wavelength Division Multiplexing (WDM), Orthogonal Frequency Division Multiplexing (OFDM).
+\end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
 % introduction
-\section{Introduction}
-%Spectrum crunch. Solid state lighting wave. VLC as a means to mitigate downlink bottleneck.\\
-%Smart spaces.  Multi-colored LEDs. Color tunability + WDM.\\
-%ACO-OFDM. DCO-OFDM. O-OFDM background.\\
-%In this work, find optimal range of operation for communication.
-%O-OFDM over each color WDM + O-OFDM. More capacity.\\
-
-% system analysis
-\section{System Analysis}
-
-% simulation and results
-\section{Simulation and Results}
-
-% conclusion
-\section{Conclusion}
-
+\input{1_intro}
+% MIMO Channel Matrix
+\input{2_mimo}
+% WDM
+\input{3_wdm}
+% Simultion and Results
+\input{4_results}
+% Conclusion
+\input{5_conclusion}
+% Acknowledgement
+\input{6_ack}
+% Bibliography
+\bibliographystyle{IEEEtran}
+\bibliography{WDMOFDM}
 \end{document}

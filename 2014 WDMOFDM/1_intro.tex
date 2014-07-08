@@ -1,0 +1,19 @@
+\section{Introduction}
+%Spectrum crunch. Solid state lighting wave. VLC as a means to mitigate downlink bottleneck.\\
+%Smart spaces.  Multi-colored LEDs. Color tunability + WDM.\\
+%ACO-OFDM. DCO-OFDM. O-OFDM background.\\
+%In this work, find optimal range of operation for communication.
+%O-OFDM over each color WDM + O-OFDM. More capacity.\\
+There has been a rapid rise in use of networked portable computing devices in recent years. These devices are consuming increasingly more information in the form of multimedia streaming. The network infrastructure is strained to keep up with this increasing demand for wireless data creating the phenomenon of 'spectrum crunch'. Its effect can be seen in reduced quality of service at lower download speeds. 
+
+On the other hand, advances made by the solid state industry has created energy efficient illumination devices called light emitting diodes (LED). The intensity of radiant flux emitted by LEDs can be modulated at a high enough rate such that information transfer can be achieved at relatively high speeds while the intensity variations are invisible to human eye. One or more LEDs can be packaged together to form a 'luminaire' which under the above model serves the dual functionality of providing wireless network access and maintaining illumination. The additional downlink capacity provided by such 'smart' luminaires can help mitigate some of the aforementioned spectrum crunch.
+
+A simple single input single output (SISO) VLC channel can be created by using an LED as a transmitter and a photodiode (PD) as a receiver. Information is modulated over the variations of the LED output flux. The PD produces an electrical signal proportional to the flux incident on it. This is also called intensity-modulation/direct-detection (IM/DD). The low modulation bandwidth of an illumination grade phosphor converted LED limits the achievable data rates. Research conducted in references {\color{red}cite} tackle improving the bandwidth of LED based transmitters.
+
+Another way of improving the capacity of a wireless channel is by using multiple transmitting and receiving elements in a multiple input multiple output (MIMO) configuration. A channel is created with multiple parallel links, each adding capacity to the channel. The parallel links can be established over dimensions such as space, time, frequency, wavelength, polarization, and others. Different types of MIMO systems {\color{red}cite} have been reported in literature.
+
+One type of an optical MIMO system is wavelength division multiplexed (WDM) VLC system. Different WDM system prototypes have been reported in literature {\color{red}cite}. These describe an instance of a WDM system without analysis of the optimal operating point. In this work, we study the design of multi-wavelength visible light communication (VLC) systems under lighting constraints. We then analyze system performance variations when correlated color temperature (CCT) of illumination, transmitter spectral power distribution and receiver spectral transmittance are varied. The analysis provides an insight into optimal design criteria.
+
+The following notations are used in this paper. Scalar values are represented in regular font. Vectors and matrices are represented in bold font. Conjugate transpose of $\vm{A}$ is represented by $\vm{A}^{*}$. Operators $:=$, $E[.]$, and $||.||$ represent definition, expectation, and euclidean norm respectively. 
+
+An introduction to optical multiple-input multiple-output (MIMO) systems is provided in Section \ref{sec:mimo}. Wavelength division multiplexing (WDM), a subset of optical MIMO systems, is introduced in Section \ref{sec:wdm}. Simulation and results are discussed in Section \ref{sec:results}. Conclusions are then drawn in Section \ref{sec:conclusion}. 
