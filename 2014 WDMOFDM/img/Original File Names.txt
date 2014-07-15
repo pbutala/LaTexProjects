@@ -1,3 +1,12 @@
+9e_SPDs_LEDSD5
+9e_CIE Standard Observer 1978
+9e_FiltTrans_FILTFWHM40
+9e_RecvResp
+9e_SNRvsCCT_FILTFWHM40_LEDSD5
+9e_SNRvsFLTWID_6250K_LEDSD5
+9e_SNRvsLEDSD_6250K_Nsc64_FILTFWHM40
+
+***************************************
 9e_CIE Standard Observer 1978
 9e_FiltTrans_FILTFWHM60
 9e_RecvResp

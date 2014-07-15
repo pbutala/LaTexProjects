@@ -3,6 +3,8 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{epstopdf}
+\usepackage[noadjust]{cite}
+\usepackage[caption=false,font=footnotesize]{subfig}
 %************ COMMENT BELOW WHEN NOT NEEDED ************%
 %\usepackage{zref-totpages}
 %\AtBeginDocument{
@@ -20,6 +22,10 @@
 %\usepackage[pdftex,hidelinks]{hyperref}
 %\usepackage{titlesec}
 %\usepackage{indentfirst}
+% ADD FOR REFERENCES TO AVOID ----- in consecutive references from same authors
+%@IEEEtranBSTCTL{IEEEexample:BSTcontrol,
+  %CTLdash_repeated_names = "no"
+%}
 %************ END COMMENT ABOVE WHEN NOT NEEDED ************%
 \newcommand{\rmnum}[1]{\romannumeral #1}
 \newcommand{\Rmnum}[1]{\MakeUppercase{\romannumeral #1}}
@@ -57,3 +63,16 @@
 		\end{IEEEeqnarraybox*}
 	\right]
 }
+\renewcommand{\citedash}{--}
+
+\output\expandafter{\the\output\floatfix}
+\makeatletter
+\def\floatfix{%
+\expandafter\ifx\csname r@x@one\endcsname\relax
+\else
+\ifnum\c@page=\numexpr\expandafter\expandafter\expandafter
+              \@secondoftwo\csname r@x@one\endcsname-1\relax
+\aftergroup\figone
+\fi
+\fi}
+\makeatother
