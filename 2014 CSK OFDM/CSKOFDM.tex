@@ -1,0 +1,50 @@
+\documentclass[conference]{IEEEtran}
+\input{__Setup}
+\begin{document}
+\bstctlcite{IEEEexample:BSTcontrol}
+% 
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Color Shift Orthogonal Frequency Division Multiplexing}
+
+
+% author names and affiliations
+% use a multiple column layout for up to two different
+% affiliations
+
+\author{\IEEEauthorblockN{Pankil M. Butala, Hany Elgala, Thomas D.C. Little}
+\IEEEauthorblockA{Department of Electrical and Computer Engineering\\
+Boston University, Boston, MA, USA\\
+\{pbutala, helgala, tdcl\}@bu.edu}
+\and
+\IEEEauthorblockN{Raed Mesleh}
+\IEEEauthorblockA{Electrical Engineering Department\\
+University of Tabuk, Tabuk, Saudi Arabia\\
+rmesleh.sncs@ut.edu.sa}}
+
+% make the title area
+\maketitle
+
+\input{abstract}
+
+\begin{IEEEkeywords}
+Visible Light Communications (VLC), Optical Wireless Communications (OWC), Multiple Input Multiple Output (MIMO), Color Shift Keying (CSK), Orthogonal Frequency Division Multiplexing (OFDM), IEEE 802.15.7
+\end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
+% introduction
+\input{1_intro}
+% color shift keying
+\input{2_csk}
+% cskofdm
+\input{3_cskofdm}
+% Simultion
+\input{4_simulation}
+% Conclusion
+\input{5_conclusion}
+% Acknowledgement
+\input{6_ack}
+% Bibliography
+\bibliographystyle{IEEEtran}
+\bibliography{CSKOFDM}
+\end{document}

@@ -4,7 +4,7 @@ This section provides an introduction to an optical MIMO channel that can be est
 	\label{eqMIMOch}
 	\vm{Y} = \vm{H}\vm{X} + \vm{W}
 \end{equation}
-$\vm{X}$ is an $N_{tx}$ dimensional vector. Each element of $\vm{X}$ represents the radiant flux emitted by each transmitting element. $\vm{Y}$ is an $N_{rx}$ dimensional vector. Each element of $\vm{Y}$ represents the signal output from each receiving element. $\vm{H}$ is an $N_{rx}\times N_{tx}$ dimensional channel matrix. Each element $h_{ij}\in \vm{H};$ $i\in \{1,2,\dots, N_{rx}\},$ $j\in \{1,2,\dots, N_{tx}\}$ represents the conversion factor for signal output from the $i^{th}$ receiving element when radiant flux from $j^{th}$ transmitting element is incident on it after including the path losses. $\vm{W}$ is an $N_{rx}$ dimensional noise vector. It is typically modeled as additive white Gaussian noise independent of transmitted vector $\vm{X}$ i.e. $\vm{W}\sim\mathcal{N}({\bf{0}},\sigma_n^2\vm{I}_{N_{rx}})$.
+$\vm{X}$ is an $N_{tx}$ dimensional vector representing the radiant flux emitted by each transmitting element. $\vm{Y}$ is an $N_{rx}$ dimensional vector representing the signal output from each receiving element. $\vm{H}$ is an $N_{rx}\times N_{tx}$ dimensional channel matrix where each element ($h_{ij}\in \vm{H}$) represents the conversion factor for signal output from the $i^{th}$ receiving element when radiant flux from $j^{th}$ transmitting element is incident on it after including the path-losses. $\vm{W}$ is an $N_{rx}$ dimensional noise vector typically modeled as additive white Gaussian noise (AWGN) independent of transmitted vector $\vm{X}$ i.e. $\vm{W}\sim\mathcal{N}({\bf{0}},\sigma_n^2\vm{I}_{N_{rx}})$ where $\sigma_n^2$ is noise variance and $\vm{I}_{N_{rx}}$ is an identity matrix of size $N_{rx}$.
 
 The amount of radiant flux per solid angle emitted by a transmitting element in a certain angular direction $\phi$ is given by the angular radiant intensity distribution. An LED's radiant intensity distribution is usually characterized by a Lambertian distribution and is given by
 \begin{equation}
@@ -49,9 +49,9 @@ where constant $k$ is Boltzmann constant, $T$ is the absolute temperature, and $
 
 Total input referred noise variance is usually approximated as the sum of shot noise variance and thermal noise variance.  For sake of mathematical simplicity, total noise is assumed to have Gaussian statistics with mean $0$ and variance $\sigma_{n}^{2} = \sigma_{sh}^{2} + \sigma_{th}^{2}$.
 
-In VLC, transmitting elements perform dual function of providing wireless data transmission while maintaining illumination levels. To perform a fair comparison between different modulation systems operating at same illumination levels needs a different definition of signal to noise ratio (SNR). In this work, SNR is defined as the ratio of the average transmitted electrical power to noise power and is similar as in reference \cite{fat13a}. 
+In VLC, transmitting elements perform dual function of providing wireless data transmission while maintaining illumination levels. Note that the transmitted radiant flux to achieve a constant target illumination at receiver will vary across different CCTs. Thus, to perform a fair comparison between different modulation schemes transmitting different radiant flux but operating at same illumination levels, needs a different definition of signal to noise ratio. In this work, signal to noise ratio is defined similar to that in reference \cite{fat13a} as the ratio of the \textit{average transmitted} electrical power to noise power. 
 \begin{equation}
 	\label{eqSNR}
-	SNR^{tx}_{avg} := \frac{(eP_{avg}^{tx})^2}{\sigma_n^{2}}
+	\text{SNR}^{\text{tx}}_{\text{avg}} := \frac{(eP_{avg}^{tx})^2}{\sigma_n^{2}}
 \end{equation}
 where $P_{avg}^{tx}$ is the average radiant flux emitted by a transmitter, $e$ is the optical to electrical conversion factor $(AW^{-1}\Omega^{-2})$ and $\sigma_n^{2}$ is the noise power. Parameter $e$ is assumed to be $1$ without loss of generality.

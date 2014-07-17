@@ -15,7 +15,7 @@ set(0,'DefaultLineMarkerSize',6);
 CCTGOOD = 1; SPD = 2; FWHM = 3; CCTBAD = 8;
 FLTT = 4; RESP = 5; CMF = 6; NSPD4 = 7;
 %***************%
-FIG = SPD;
+FIG = CCTGOOD;
 %***************%
 PREFIXMOD = '0_';
 FSZ = 16;
@@ -57,6 +57,7 @@ set(get(ax,'xlabel'),'fontsize', FSZ);
 set(get(ax,'ylabel'),'fontsize', FSZ);
 set(get(ax,'title'),'fontsize', FSZ);
 set(ax,'fontsize',FSZ);
+set(0,'DefaultFigurePaperPosition',[0 0 8 6]);
 
 HLines = findall(gca,'type','line');
 switch FIG
@@ -110,7 +111,7 @@ switch FIG
     case CCTGOOD % SNR v CCT
         xlabel('Correlated color temperature (K)');
         annotation('ellipse','Position',[0.75 0.295 0.05 0.16],'LineWidth',2);
-        annotation('textbox','String',sprintf('Power efficient\nCCT = 6250 K'),'FontSize',FSZTB,'Position',[0.675 0.4 0.35 0.16],'EdgeColor','none');
+        annotation('textbox','String',sprintf('Power efficient\nCCT = 6250 K'),'FontSize',FSZTB,'Position',[0.575 0.4 0.35 0.16],'EdgeColor','none');
     case CCTBAD % SNR v CCT
         xlabel('Correlated color temperature (K)');
         annotation('ellipse','Position',[0.28 0.39 0.05 0.275],'LineWidth',2);
