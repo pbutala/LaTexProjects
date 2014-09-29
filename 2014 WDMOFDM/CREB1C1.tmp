@@ -3,13 +3,13 @@
 
 @ARTICLE{arm09a,
   author = {Armstrong, J.},
-  title = {{OFDM for optical communications}},
+  title = {OFDM for Optical Communications},
   journal = {Lightwave Technology, Journal of},
   year = {2009},
   volume = {27},
   pages = {189 -204},
   number = {3},
-  month = {Feb},
+  month = {feb.1, },
   category = {Tutorial OFDM},
   doi = {10.1109/JLT.2008.2010061},
   file = {:PB\\[Tutorial OFDM][arm09a] OFDM for Optical Communications.pdf:PDF},
@@ -27,13 +27,13 @@
 
 @ARTICLE{arm06a,
   author = {Armstrong, J. and Lowery, A.J.},
-  title = {{Power efficient optical OFDM}},
+  title = {Power efficient optical OFDM},
   journal = {Electronics Letters},
   year = {2006},
   volume = {42},
   pages = { 370 - 372},
   number = {6},
-  month = {Mar},
+  month = {march},
   category = {OFDM ACO},
   doi = {10.1049/el:20063636},
   file = {:MIMO\\[OFDM][arm06a] Power efficient optical OFDM.pdf:PDF},
@@ -50,10 +50,11 @@
 @INPROCEEDINGS{ash10a,
   author = {Ashok, Ashwin and Gruteser, Marco and Mandayam, Narayan and Silva,
 	Jayant and Varga, Michael and Dana, Kristin},
-  title = {{Challenge: mobile optical networks through visual MIMO}},
+  title = {Challenge: mobile optical networks through visual MIMO},
   booktitle = {Proceedings of the sixteenth annual international conference on Mobile
 	computing and networking},
   year = {2010},
+  series = {MobiCom '10},
   pages = {105--112},
   address = {New York, NY, USA},
   publisher = {ACM},
@@ -70,21 +71,24 @@
   timestamp = {2012.10.11}
 }
 
-@ARTICLE{but14b,
-  author = {Pankil M Butala and Hany Elgala and Thomas D.C. Little},
-  title = {{Sample indexed spatial orthogonal frequency division multiplexing}},
-  journal = {Chinese Optics Letters},
+@INPROCEEDINGS{but14a,
+  author = {Butala, Pankil M. and Elgala, Hany and Little, Thomas D.C.},
+  title = {Performance of Optical Spatial Modulation and Spatial Multiplexing
+	with Imaging Receiver},
+  booktitle = {IEEE WCNC'14 Track 1 : PHY},
   year = {2014},
-  volume = {12},
-  number = {9},
-  owner = {pbutala},
-  timestamp = {2014.07.14}
+  address = {Istanbul, Turkey},
+  month = {Apr},
+  days = {6},
+  keywords = {Visible Light Communications; Optical Wireless Communications; Optical
+	Spatial Modulation; Spatial Multiplexing; Spatial Shift Keying; Multiple
+	Input Multiple Output; Imaging Receiver}
 }
 
 @INPROCEEDINGS{but13a,
   author = {Butala, Pankil M. and Elgala, Hany and Little, Thomas D.C.},
-  title = {{SVD-VLC: A novel capacity maximizing VLC MIMO system architecture
-	under illumination constraints}},
+  title = {SVD-VLC: A novel capacity maximizing VLC MIMO system architecture
+	under illumination constraints},
   booktitle = {Globecom Workshops (GC Wkshps), 2013 IEEE},
   year = {2013},
   pages = {1087-1092},
@@ -100,8 +104,8 @@
 
 @ARTICLE{car96a,
   author = {Carruthers, J.B. and Kahn, J.M.},
-  title = {{Multiple-subcarrier modulation for nondirected wireless infrared
-	communication}},
+  title = {Multiple-subcarrier modulation for nondirected wireless infrared
+	communication},
   journal = {Selected Areas in Communications, IEEE Journal on},
   year = {1996},
   volume = {14},
@@ -127,7 +131,7 @@
 @ARTICLE{che12a,
   author = {Chen, Q. and Das, D. and Chitnis, D. and Walls, K. and Drysdale,
 	T.D. and Collins, S. and Cumming, D.R.S.},
-  title = {{A CMOS image sensor integrated with plasmonic colour filters}},
+  title = {A CMOS Image Sensor Integrated with Plasmonic Colour Filters},
   journal = {Plasmonics},
   year = {2012},
   volume = {7},
@@ -148,7 +152,7 @@
 @ARTICLE{cos12a,
   author = {G. Cossu and A. M. Khalid and P. Choudhury and R. Corsini and E.
 	Ciaramella},
-  title = {{3.4 Gbit/s visible optical wireless transmission based on RGB LED}},
+  title = {3.4 Gbit/s visible optical wireless transmission based on RGB LED},
   journal = {Opt. Express},
   year = {2012},
   volume = {20},
@@ -163,8 +167,8 @@
 
 @ARTICLE{fat13a,
   author = {Fath, T. and Haas, H.},
-  title = {{Performance comparison of MIMO techniques for optical wireless communications
-	in indoor environments}},
+  title = {Performance Comparison of MIMO Techniques for Optical Wireless Communications
+	in Indoor Environments},
   journal = {Communications, IEEE Transactions on},
   year = {2013},
   volume = {61},
@@ -176,7 +180,7 @@
 
 @ARTICLE{gru08b,
   author = {Grubor, J. and Randel, S. and Langer, K.-D. and Walewski, J.W.},
-  title = {{Broadband information broadcasting using LED-based interior lighting}},
+  title = {Broadband Information Broadcasting Using LED-Based Interior Lighting},
   journal = {Lightwave Technology, Journal of},
   year = {2008},
   volume = {26},
@@ -197,24 +201,15 @@
   timestamp = {2013.06.23}
 }
 
-@ELECTRONIC{qeff,
-  author = {Christiana Honsberg and Stuart Bowden},
-  title = {{Quantum efficiency}},
-  organization = {PVEducation.org},
-  url = {http://www.pveducation.org/pvcdrom/solar-cell-operation/quantum-efficiency},
-  owner = {pbutala},
-  timestamp = {2014.07.14}
-}
-
 @ARTICLE{hra06a,
   author = {Hranilovic, S. and Kschischang, F.R.},
-  title = {{A pixelated MIMO wireless optical communication system}},
+  title = {A pixelated MIMO wireless optical communication system},
   journal = {Selected Topics in Quantum Electronics, IEEE Journal of},
   year = {2006},
   volume = {12},
   pages = {859 -874},
   number = {4},
-  month = {Jul-Aug},
+  month = {july-aug. },
   category = {MIMO Pixel},
   doi = {10.1109/JSTQE.2006.876601},
   file = {:MIMO\\[MIMO Pixel][hra06a] Pixelated_A pixelated MIMO wireless optical communication system.pdf:PDF},
@@ -231,13 +226,13 @@
 
 @ARTICLE{kah97a,
   author = {Kahn, J.M. and Barry, J.R.},
-  title = {{Wireless infrared communications}},
+  title = {Wireless infrared communications},
   journal = {Proceedings of the IEEE},
   year = {1997},
   volume = {85},
   pages = {265 -298},
   number = {2},
-  month = {Feb},
+  month = {feb},
   category = {Tutorial},
   doi = {10.1109/5.554222},
   file = {:PB\\[Tutorial 97][kah97a] Wireless Infrared Communications.pdf:PDF},
@@ -258,14 +253,14 @@
 
 @ARTICLE{kom04a,
   author = {Komine, T. and Nakagawa, M.},
-  title = {{Fundamental analysis for visible-light communication system using
-	LED lights}},
+  title = {Fundamental analysis for visible-light communication system using
+	LED lights},
   journal = {Consumer Electronics, IEEE Transactions on},
   year = {2004},
   volume = {50},
   pages = { 100 - 107},
   number = {1},
-  month = {Feb},
+  month = {feb},
   abstract = { White LED offers advantageous properties such as high brightness,
 	reliability, lower power consumption and long lifetime. White LEDs
 	are expected to serve in the next generation of lamps. An indoor
@@ -292,10 +287,11 @@
 @INPROCEEDINGS{kot12a,
   author = {Christoph Kottke and Jonas Hilt and Kai Habel and Jelena Vu\v{c}i\'{c}
 	and Klaus-Dieter Langer},
-  title = {{1.25 Gbit/s visible light WDM link based on DMT modulation of a
-	single RGB LED luminary}},
+  title = {1.25 Gbit/s Visible Light WDM Link based on DMT Modulation of a Single
+	RGB LED Luminary},
   booktitle = {European Conference and Exhibition on Optical Communication},
   year = {2012},
+  pages = {We.3.B.4},
   publisher = {Optical Society of America},
   category = {VLC},
   doi = {10.1364/ECEOC.2012.We.3.B.4},
@@ -306,14 +302,14 @@
 
 @ARTICLE{mes11a,
   author = {Mesleh, R. and Elgala, H. and Haas, H.},
-  title = {{On the performance of different OFDM based optical wireless communication
-	systems}},
+  title = {On the Performance of Different OFDM Based Optical Wireless Communication
+	Systems},
   journal = {Optical Communications and Networking, IEEE/OSA Journal of},
   year = {2011},
   volume = {3},
   pages = {620 -628},
   number = {8},
-  month = {Aug},
+  month = {august },
   category = {OFDM},
   doi = {10.1364/JOCN.3.000620},
   file = {:PB\\[OFDM][mes11a] On the Performance of Different OFDM Based Optical Wireless Communication Systems.pdf:PDF},
@@ -335,11 +331,11 @@
 
 @INPROCEEDINGS{mes10a,
   author = {Mesleh, R. and Mehmood, R. and Elgala, H. and Haas, H.},
-  title = {{Indoor MIMO optical wireless communication using spatial modulation}},
+  title = {Indoor MIMO Optical Wireless Communication Using Spatial Modulation},
   booktitle = {Communications (ICC), 2010 IEEE International Conference on},
   year = {2010},
   pages = {1 -5},
-  month = {May},
+  month = {may},
   category = {MIMO},
   doi = {10.1109/ICC.2010.5502062},
   file = {:PB\\[MIMO][mes10a] Indoor MIMO Optical Wireless Communication Using Spatial Modulation.pdf:PDF},
@@ -355,14 +351,13 @@
 @ARTICLE{min08a,
   author = {Hoa Le Minh and O'Brien, D. and Faulkner, G. and Lubin Zeng and Kyungwoo
 	Lee and Daekwang Jung and YunJe Oh},
-  title = {{High-speed visible light communications using multiple-resonant
-	equalization}},
+  title = {High-Speed Visible Light Communications Using Multiple-Resonant Equalization},
   journal = {Photonics Technology Letters, IEEE},
   year = {2008},
   volume = {20},
   pages = {1243 -1245},
   number = {14},
-  month = {Jul},
+  month = {july15, },
   category = {Equal},
   doi = {10.1109/LPT.2008.926030},
   file = {:MIMO\\[Equalization][min08a] High-Speed Visible Light Communications Using Multiple Resonant Equalization.pdf:PDF},
@@ -376,38 +371,16 @@
   timestamp = {2012.08.13}
 }
 
-@ARTICLE{neu11a,
-  author = {A. Neumann and J. J. Wierer and W. Davis and Y. Ohno and S. R. J.
-	Brueck and J.Y. Tsao},
-  title = {Four-color laser white illuminant demonstrating high color-rendering
-	quality},
-  journal = {Opt. Express},
-  year = {2011},
-  volume = {19},
-  pages = {A982--A990},
-  number = {S4},
-  month = {Jul},
-  category = {Laser Illumination},
-  doi = {10.1364/OE.19.00A982},
-  file = {:PB\\[Laser Illumination][neu11a] Four-color laser white illuminant demonstrating high color-rendering quality.pdf:PDF},
-  keywords = {Lasers and laser optics; Light-emitting diodes; Optoelectronics; Vision,
-	color, and visual optics ; Color, rendering and metamerism ; Semiconductor
-	lasers},
-  owner = {pbutala},
-  publisher = {OSA},
-  timestamp = {2014.07.15}
-}
-
 @ARTICLE{wan11a,
   author = {Ke Wang and Nirmalathas, A. and Lim, C. and Skafidas, E.},
-  title = {{4$\times$12.5 Gb/s WDM optical wireless communication system for
-	indoor applications}},
+  title = {4 12.5 Gb/s WDM Optical Wireless Communication System for Indoor
+	Applications},
   journal = {Lightwave Technology, Journal of},
   year = {2011},
   volume = {29},
   pages = {1988 -1996},
   number = {13},
-  month = {Jul},
+  month = {july1, },
   category = {WDM},
   doi = {10.1109/JLT.2011.2155622},
   file = {:MIMO\\[WDM][wan11a] 4x12.5 Gbps WDM Optical Wireless Communication System for Indoor Applications.pdf:PDF},
@@ -423,13 +396,13 @@
 
 @ARTICLE{xu10a,
   author = {Xu, Ting and Wu, Yi-Kuei and Luo, Xiangang and Guo, L. Jay},
-  title = {{Plasmonic nanoresonators for high-resolution colour filtering and
-	spectral imaging}},
+  title = {Plasmonic nanoresonators for high-resolution colour filtering and
+	spectral imaging},
   journal = {Nature Communications},
   year = {2010},
   volume = {1},
   number = {59},
-  month = {Aug},
+  month = {August},
   category = {Plasmonic Filters},
   doi = {10.1038/ncomms1058},
   file = {:PB\\[Plasmonic Filters][xu10a] Plasmonic nanoresonators for high-resolution colour filtering and spectral imaging.pdf:PDF},
@@ -439,7 +412,7 @@
 
 @ARTICLE{yok12a,
   author = {Yokogawa, Sozo and Burgos, Stanley P. and Atwater, Harry A.},
-  title = {{Plasmonic color filters for CMOS image sensor applications}},
+  title = {Plasmonic Color Filters for CMOS Image Sensor Applications},
   journal = {Nano Letters},
   year = {2012},
   volume = {12},
@@ -452,24 +425,11 @@
   timestamp = {2014.07.14}
 }
 
-@BOOK{gha12a,
-  title = {{Optical wireless communications: system and channel modelling with
-	MATLAB$^{\text{\textregistered}}$}},
-  publisher = {CRC Press},
-  year = {2012},
-  editor = {{Taylor \& Francis Group}},
-  author = {Z. Ghassemlooy, W. Popoola, S. Rajbhandari},
-  pages = {575},
-  month = {August},
-  owner = {pbutala},
-  timestamp = {2014.07.14}
-}
-
 @INPROCEEDINGS{zen08a,
   author = {Lubin Zeng and O'brien, D. and Hoa Le-Minh and Kyungwoo Lee and Daekwang
 	Jung and Yunje Oh},
-  title = {{Improvement of date rate by using equalization in an indoor visible
-	light communication system}},
+  title = {Improvement of Date Rate by using Equalization in an Indoor Visible
+	Light Communication System},
   booktitle = {Circuits and Systems for Communications, 2008. ICCSC 2008. 4th IEEE
 	International Conference on},
   year = {2008},
@@ -491,14 +451,14 @@
 @ARTICLE{zen09a,
   author = {Lubin Zeng and O'Brien, D. and Hoa Minh and Faulkner, G. and Kyungwoo
 	Lee and Daekwang Jung and YunJe Oh and Eun Tae Won},
-  title = {{High data rate multiple input multiple output (MIMO) optical wireless
-	communications using white LED lighting}},
+  title = {High data rate multiple input multiple output (MIMO) optical wireless
+	communications using white led lighting},
   journal = {Selected Areas in Communications, IEEE Journal on},
   year = {2009},
   volume = {27},
   pages = {1654 -1662},
   number = {9},
-  month = {Dec},
+  month = {december },
   category = {MIMO},
   doi = {10.1109/JSAC.2009.091215},
   file = {:MIMO\\[MIMO][zen09a] High Data Rate MIMO Optical Wireless Communications Using White LED Lighting.pdf:PDF},
@@ -515,10 +475,11 @@
 }
 
 @ELECTRONIC{cis14a,
-  month = {Jun},
+  month = {June},
   year = {2014},
-  title = {{Cisco visual networking index: forecast and methodology, 2013-2018}},
-  howpublished = {White paper},
+  title = {Cisco Visual Networking Index: Forecast and Methodology, 2013-2018},
+  howpublished = {White Paper},
+  organization = {Cisco},
   category = {Cisco},
   file = {:PB\\[Cisco][cis14a] Cisco Visual Networking Index Forecast and Methodology, 2013-2018.pdf:PDF},
   owner = {pbutala},

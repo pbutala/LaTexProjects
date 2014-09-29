@@ -1,0 +1,97 @@
+\documentclass[10pt]{article}
+\input{TR__Setup}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor IEEEtran}
+
+%%%%%%%%%%%%%%% code for theorem %%%%%%%%%%%%%%%
+\newtheorem{theorem}{Theorem}[section]
+% \newtheorem* {thma}{Theorem A}
+% \newtheorem*{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof:]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%% Temp Variable %%%%%%%%%%%%%
+
+   \newcounter{mytempeqncnt}   % Temp for storing equation numbers due to multi-line equations
+
+%%%%% Temp Variable %%%%%%%%%%%%%
+
+
+%\def\tenrm{\fontsize{10}{12}\normalfont\rmfamily\selectfont}
+%\def\BibTeX{{\rmfamily B\kern-.05em{\scshape i\kern-.025em b}\kern-.08em \TeX}}
+\setlength{\textheight}{9.0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-0.5in}
+\setlength{\parindent}{1pc}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+%\doublespacing
+
+\begin{document}
+
+\title{Multi-Wavelength Visible Light Communication System Design\footnote{In {\it Globecom 2014 Workshop on Optical Wireless Communications (GC14 WS - OWC}, Austin, TX, December 2014. This work is 
+supported by the NSF under grant
+No. CNS-0435353. Any opinions, findings, and conclusions or
+recommendations expressed in this material are those of the author(s)
+and do not necessarily reflect the views of the National Science
+Foundation.}}
+
+\author{Pankil Butala $^{1a}$, Hany Elgala $^{1a}$, Payman Zarkesh-Ha $^{2b}$, and T.D.C. Little $^{1a}$\\
+Department of Electrical and Computer Engineering\\
+$^1$ Boston University, Boston, MA\\
+$^a$ \{\it{pbutala,helgala,tdcl\}@bu.edu}\\
+$^2$ University of New Mexico, Albuquerque, NM\\
+$^b$ \it{payman@ece.unm.edu}\\}
+
+
+\date{October 01, 2014}
+\maketitle
+
+\begin{center}
+MCL Technical Report No. 10-01-2014
+\end{center}
+
+%\vspace{-3ex}
+
+\noindent{\bf Abstract}--\input{TRabstract}
+
+\newpage
+
+% introduction
+\input{TR1_intro}
+% MIMO Channel Matrix
+\input{TR2_mimo}
+% WDM
+\input{TR3_wdm}
+% Simultion
+\input{TR4_simulation}
+% Results
+\input{TR4_results}
+% Conclusion
+\input{TR5_conclusion}
+% Acknowledgement
+\input{TR6_ack}
+% Bibliography
+\bibliographystyle{IEEEtran}
+\bibliography{WDMOFDM}
+%\end{thebibliography}
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

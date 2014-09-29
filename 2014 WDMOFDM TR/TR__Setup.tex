@@ -1,0 +1,97 @@
+\usepackage{threeparttable}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage{cite}
+%************ COMMENT BELOW WHEN NOT NEEDED ************%
+%\usepackage{zref-totpages}
+%\AtBeginDocument{
+  %%\ifnum\ztotpages>6 %
+    %\hypersetup{pdfstartpage=3,
+		%%colorlinks = true, %Colors links instead of ugly boxes
+		%%urlcolor = blue, %Color for external hyperlinks
+		%%linkcolor = blue, %Color of internal links
+		%%citecolor = red,  %Color of citations
+		%}%
+%%	\else
+%%		\hypersetup{pdfstartpage=5}%
+  %%\fi
+%}
+%\usepackage[pdftex,hidelinks]{hyperref}
+%\usepackage{titlesec}
+%\usepackage{indentfirst}
+% ADD FOR REFERENCES TO AVOID ----- in consecutive references from same authors
+%@IEEEtranBSTCTL{IEEEexample:BSTcontrol,
+  %CTLdash_repeated_names = "no"
+%}
+%************ END COMMENT ABOVE WHEN NOT NEEDED ************%
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\MakeUppercase{\romannumeral #1}}
+\newcommand{\vect}[1]{\overline {#1}}
+\newcommand{\vm}[1]{{\bf{#1}}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\idxmin}{\operatornamewithlimits{idxmin}}
+\newcommand{\idxmax}{\operatornamewithlimits{idxmax}}
+\newcommand{\twopartdef}[4]
+{
+	\left\{
+		\begin{array}{ll}
+			#1 &; #2 \\
+			#3 &; #4
+		\end{array}
+	\right.
+}
+\newcommand{\vecttwo}[2]
+{
+	\left[
+		\begin{IEEEeqnarraybox*}[][c]{c}
+		#1\\
+		#2
+		\end{IEEEeqnarraybox*}
+	\right]
+}
+\newcommand{\vectthree}[3]
+{
+	\left[
+		\begin{IEEEeqnarraybox*}[][c]{c}
+		#1\\
+		#2\\
+		#3
+		\end{IEEEeqnarraybox*}
+	\right]
+}
+\renewcommand{\citedash}{--}
+\renewcommand{\vecttwo}[2]
+{
+\left[
+\begin{matrix}
+#1\\
+#2
+\end{matrix}
+\right]
+}
+\renewcommand{\vectthree}[3]
+{
+\left[
+\begin{matrix}
+#1\\
+#2\\
+#3
+\end{matrix}
+\right]
+}
+
+\output\expandafter{\the\output\floatfix}
+\makeatletter
+\def\floatfix{%
+\expandafter\ifx\csname r@x@one\endcsname\relax
+\else
+\ifnum\c@page=\numexpr\expandafter\expandafter\expandafter
+              \@secondoftwo\csname r@x@one\endcsname-1\relax
+\aftergroup\figone
+\fi
+\fi}
+\makeatother
