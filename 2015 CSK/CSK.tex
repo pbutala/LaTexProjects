@@ -58,7 +58,7 @@ Boston University, Boston, MA 02215, USA\\
 %% [use \begin{abstract*}...\end{abstract*} if exempt from copyright]
 
 \begin{abstract}
-IEEE standard for local and metropolitan area networks -- part 802.15, task group 7 outlines specifications for short range wireless optical communication using visible light. For indoor optical wireless communications while providing illumination, this standard specifies color shift keying (CSK) as the modulation scheme of choice. To implement CSK, the standard specifies 7 color bands and 9 color band combinations using different colored LEDs. This article studies the performance of M-ary CSK under the linear system model as specified in the standard. The study is then extended to incorporate system level non-linearity introduced by color coordinate to radiant flux transformation and vice-versa for a practical system. It is shown that this non-linearity has at least 15dB, 10dB and 5dB performance penalty for M=4,8,16-CSK respectively. Additionally in a practical system, user requirement to maintain a target illumination intensity level restricts the amount of average radiant flux available for communication using different color band combinations. This work then introduces a luminous-signal-to-noise ratio (LSNR) metric and compares performance of different color band combinations emitting different radiant fluxes for M-ary CSK as a result of user defined target illumination constraints.
+The IEEE 802.15.7 standard defines specifications for short-range wireless optical communication using visible light. The standard specifies color shift keying (CSK) as the preferred modulation scheme for indoor optical wireless communications when simultaneously providing illumination. CSK is indicated in standard with 7 color bands and 9 color band combinations using distinct LED colors. This article studies the performance of M-ary CSK under the linear system model as specified in the standard, but also when nonlinearities are considered as dictated by the difference between human perception and radiant flux and the inherent characteristics implied by modeling in the CIE color coordinate system. It is shown that these nonlinearities introduce performance penalties of more than 15dB, 10dB, and 5dB for M=4, 8, and 16-CSK respectively. Additionally, the requirement to maintain a target illumination intensity in a practical lighting system constrains the average radiant flux available for communication using the different color band combinations. The analysis shown introduces a luminous-signal-to-noise ratio (LSNR) metric and compares performance of different color band combinations emitting different radiant fluxes for M-ary CSK as a result of user defined target illumination constraints.
 \end{abstract}
 
 \ocis{(060.2605) Free-space optical communication, (060.4080) Modulation, (060.4510) Optical communications} 
@@ -66,18 +66,18 @@ IEEE standard for local and metropolitan area networks -- part 802.15, task grou
 
 %%%%%%%%%%%%%%%%%%%%%%% References %%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{thebibliography}{99}
-\bibitem{cis14a} ''{Cisco visual networking index: forecast and methodology, 2013-2018},'' (2014).
+\bibitem{cis14a} ``{Cisco visual networking index: forecast and methodology, 2013-2018},'' (2014).
 %\bibitem{rah11a} Rahaim et al ''{A hybrid Radio Frequency and broadcast Visible Light Communication system},'' Globecom Workshops, IEEE 792-796 (2011).
-\bibitem{rah15a} Rahaim et al ''{Towards Practical Integration of Dual-Use VLC within 5G Networks},'' to appear in IEEE Wireless Comm. (2015).
-\bibitem{gru08b} Grubor et al ''{Broadband Information Broadcasting Using LED-Based Interior Lighting},'' J. Lightwave Tech. {\bf 26}(24), 3883--3892 (2008).
-\bibitem{min08a} Minh et al ''{High-Speed Visible Light Communications Using Multiple-Resonant Equalization},'' IEEE Photon. Lett. {\bf 20}(14), 1243--1245 (2008).
-\bibitem{arm09a} J. Armstrong ''{OFDM for Optical Communications},'' J. Lightwave Tech. {\bf 27}(3), 189-204 (2009).
-\bibitem{but14b} Butala et al ''{Sample indexed spatial orthogonal frequency division multiplexing},'' Chin. Opt. Lett. {\bf 12}(9), 090602 (2014)
-\bibitem{cskxy} Yokoi et al, ''{CSK constellation in all color band combinations},'' {https://mentor.ieee.org/802.15/dcn/11/15-11-0247-00-0007-csk-constellation-in-all-color-band-combinations.pdf} (2011).
-\bibitem{but12a} Butala et al ''{Metameric modulation for diffuse visible light communications with constant ambient lighting},'' Intl. Workshop on Opt. Wireless Comm. (IWOW), 1-3 (2012).
-\bibitem{ieee802.15.7} ''{IEEE Standard for Local and Metropolitan Area Networks--Part 15.7: Short-Range Wireless Optical Communication Using Visible Light},'' (2011).
-\bibitem{raj12a} Rajagopal et al ''{IEEE 802.15.7 visible light communication: modulation schemes and dimming support},'' IEEE Comm. Mag. {\bf 50}(3), 72-82 (2012).
-\bibitem{sin13a} Singh et al ''{Performance evaluation of IEEE 802.15.7 CSK physical layer},'' Globecom Workshops, IEEE 1064-1069 (2013).
+\bibitem{rah15a} M. Rahaim and T. Little, ``{Towards Practical Integration of Dual-Use VLC within 5G Networks},'' to appear in IEEE Wireless Comm. (2015).
+\bibitem{gru08b} J. Grubor, S. Randel, K-D Langer and J.W. Walewski, ``{Broadband Information Broadcasting Using LED-Based Interior Lighting},'' J. Lightwave Tech. {\bf 26}(24), 3883--3892 (2008).
+\bibitem{min08a} H. Minh, D. O'Brien, G. Faulkner, L. Zeng, K. Lee, D. Jung and Y. Oh, ``{High-Speed Visible Light Communications Using Multiple-Resonant Equalization},'' IEEE Photon. Lett. {\bf 20}(14), 1243--1245 (2008).
+\bibitem{arm09a} J. Armstrong ``{OFDM for Optical Communications},'' J. Lightwave Tech. {\bf 27}(3), 189-204 (2009).
+\bibitem{but14b} P. Butala, H. Elgala and T. Little, ``{Sample indexed spatial orthogonal frequency division multiplexing},'' Chin. Opt. Lett. {\bf 12}(9), 090602 (2014)
+\bibitem{cskxy} A. Yokoi, J. Son and T. Bae, ``{CSK constellation in all color band combinations},'' {https://mentor.ieee.org/802.15/dcn/11/15-11-0247-00-0007-csk-constellation-in-all-color-band-combinations.pdf} (2011).
+\bibitem{but12a} P. Butala, J. Chau and T. Little, ``{Metameric modulation for diffuse visible light communications with constant ambient lighting},'' Intl. Workshop on Opt. Wireless Comm. (IWOW), 1-3 (2012).
+\bibitem{ieee802.15.7} ``{IEEE Standard for Local and Metropolitan Area Networks--Part 15.7: Short-Range Wireless Optical Communication Using Visible Light},'' (2011).
+\bibitem{raj12a} S. Rajagopal, R.D. Roberts and S-K Lim, ``{IEEE 802.15.7 visible light communication: modulation schemes and dimming support},'' IEEE Comm. Mag. {\bf 50}(3), 72-82 (2012).
+\bibitem{sin13a} R. Singh, T. O'Farrell and J.P.R. David, ``{Performance evaluation of IEEE 802.15.7 CSK physical layer},'' Globecom Workshops, IEEE 1064-1069 (2013).
 
 %\bibitem{gallo99} K. Gallo and G. Assanto, ``All-optical diode based on second-harmonic generation in an asymmetric waveguide,'' \josab {\bf 16}(2), 267--269 (1999).
 %{\bf volume}(issue)
@@ -295,21 +295,21 @@ A block diagram of the CSK signaling chain is shown in \figurename\ref{figCSKBD}
 	\centering
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			\includegraphics[trim={0.0in 0.0in 0.1in 0.3in}, clip=true, width=\textwidth]{M04_4-CSK_BERvsSNR.eps}
+			\includegraphics[trim={0.1in 0.0in 0.6in 0.3in}, clip=true, width=\textwidth]{M04_4-CSK_BERvsSNR.eps}
 			\caption{4-CSK}
 			\label{fig4SNR}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			\includegraphics[trim={0.0in 0.0in 0.1in 0.3in}, clip=true, width=\textwidth]{M08_8-CSK_BERvsSNR.eps}
+			\includegraphics[trim={0.1in 0.0in 0.6in 0.3in}, clip=true, width=\textwidth]{M08_8-CSK_BERvsSNR.eps}
 			\caption{8-CSK}
 			\label{fig8SNR}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			\includegraphics[trim={0.0in 0.0in 0.1in 0.3in}, clip=true, width=\textwidth]{M16_16-CSK_BERvsSNR.eps}
+			\includegraphics[trim={0.1in 0.0in 0.6in 0.3in}, clip=true, width=\textwidth]{M16_16-CSK_BERvsSNR.eps}
 			\caption{16-CSK}
 			\label{fig16SNR}
 		\end{subfigure}
@@ -320,26 +320,42 @@ A block diagram of the CSK signaling chain is shown in \figurename\ref{figCSKBD}
 	\centering
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			%\includegraphics[trim={0.0in 0.0in 0.1in 0.3in}, clip=true, width=\textwidth]{M04_4-CSK_CBC1_ReceivedSymbols3.eps}
-			\includegraphics[trim={4.7in 0.3in 4.5in 0.3in}, clip=true, width=\textwidth]{M04_4-CSK_CBC2_ReceivedSymbols3.eps}
+			\includegraphics[trim={1.0in 0.0in 1.3in 0.1in}, clip=true, width=0.9\textwidth]{M04_4-CSK_CBC2_ReceivedSymbols2.eps}
 			\caption{4-CSK}
 			\label{fig4RcvSym}
 		\end{subfigure}
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			%\includegraphics[trim={0.0in 0.0in 0.1in 0.3in}, clip=true, width=\textwidth]{M08_8-CSK_CBC1_ReceivedSymbols4.eps}
-			\includegraphics[trim={4.7in 0.3in 4.5in 0.3in}, clip=true, width=\textwidth]{M08_8-CSK_CBC2_ReceivedSymbols4.eps}
+			\includegraphics[trim={1.0in 0.0in 1.3in 0.1in}, clip=true, width=0.9\textwidth]{M08_8-CSK_CBC2_ReceivedSymbols2.eps}
 			\caption{8-CSK}
 			\label{fig8RcvSym}
 		\end{subfigure}
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			%\includegraphics[trim={0.0in 0.0in 0.1in 0.3in}, clip=true, width=\textwidth]{M16_16-CSK_CBC1_ReceivedSymbols3.eps}
-			\includegraphics[trim={4.7in 0.3in 4.5in 0.3in}, clip=true, width=\textwidth]{M16_16-CSK_CBC2_ReceivedSymbols4.eps}
+			\includegraphics[trim={1.0in 0.0in 1.3in 0.1in}, clip=true, width=0.9\textwidth]{M16_16-CSK_CBC2_ReceivedSymbols3.eps}
 			\caption{16-CSK}
 			\label{fig16RcvSym}
 		\end{subfigure}
-	\caption{Received symbols for CBC$_{2}$}
+		%%%%%%%%% Y0 %%%%%%%%%
+		\begin{subfigure}{0.32\textwidth}
+		\centering
+			\includegraphics[trim={1.0in 0.0in 1.3in 0.1in}, clip=true, width=0.9\textwidth]{M04_4-CSK_CBC2_ReceivedSymbols2_Y0.eps}
+			\caption{4-CSK}
+			\label{fig4RcvSymY0}
+		\end{subfigure}
+		\begin{subfigure}{0.32\textwidth}
+		\centering
+			\includegraphics[trim={1.0in 0.0in 1.3in 0.1in}, clip=true, width=0.9\textwidth]{M08_8-CSK_CBC2_ReceivedSymbols2_Y0.eps}
+			\caption{8-CSK}
+			\label{fig8RcvSymY0}
+		\end{subfigure}
+		\begin{subfigure}{0.32\textwidth}
+		\centering
+			\includegraphics[trim={1.0in 0.0in 1.3in 0.1in}, clip=true, width=0.9\textwidth]{M16_16-CSK_CBC2_ReceivedSymbols3_Y0.eps}
+			\caption{16-CSK}
+			\label{fig16RcvSymY0}
+		\end{subfigure}
+	\caption{Received symbols for CBC$_{2}$. (\subref{fig4RcvSym}),(\subref{fig8RcvSym}),(\subref{fig16RcvSym}): Receiver output not clipped. (\subref{fig4RcvSymY0}),(\subref{fig8RcvSymY0}),(\subref{fig16RcvSymY0}): Negative values of receiver output clipped to 0.}
 	\label{figRcvSym}
 \end{figure}
 
@@ -347,7 +363,9 @@ Monte-carlo simulations are performed to compute performance of M-CSK under the 
 
 \figurename\ref{figBERvsSNR} shows performance of the 9 CBCs under the linear model. CBC$_{2}$ performs the best whereas CBC$_{9}$ performs the worst. This performance is as expected. As seen from Table \ref{tCBC}, CBC$_{2}$ is composed of CB$_{6}$, CB$_{1}$ and CB$_{0}$ while CBC$_{9}$ is composed of CB$_{2}$, CB$_{1}$ and CB$_{0}$. Thus from values in Table 1 and \figurename 1, it can be seen that constellation points for CBC$_{2}$ are the most spread out and thus have the largest minimum distance between constellation points where as that for CBC$_{9}$ have the shortest spread and thus have the smallest minimum distance between constellation points. SNR of at least 15, 20 and 25 dB are needed to achieve a target minimum bit error rate (BER) of $10^{-3}$ under the linear model for M=4,8,16 CSK respectively.
 
-\figurename\ref{figRcvSym} shows received constellations for CBC$_{2}$ under the linear model. As expected, noise is spread normally along x and y dimensions forming a circular envelop around all constellation points. For M=8 and M=16, 'holes' can be seen in the received coordinates, thus indicating that these constellations could be better packed and further optimized to achieve better spectral efficiency.
+\figurename\ref{figRcvSym} shows received constellations for CBC$_{2}$ under the linear model. As expected, noise is spread normally along x and y dimensions forming a circular envelop around all constellation points. For M=8 and M=16, 'holes' can be seen in the received coordinates, thus indicating that these constellations could be better packed and further optimized to achieve better spectral efficiency. 
+
+It must be noted here that for \figurename\ref{figRcvSym}(\subref{fig4RcvSym}), (\subref{fig8RcvSym}) and (\subref{fig16RcvSym}), some of the received constellation points are located outside the color gamut (triangle IJK as outlined in \figurename\ref{figConst}) formed by the sources for i,j and k bands. This 'anomaly' can be explained as follows. The CIE 1931 CS is derived assuming (and correctly so) positive radiant fluxes. Under that scenario, the transmitted constellation points reside on or inside the gamut. At the receiver, the unipolar transmitted radiant fluxes are converted into unipolar electrical signal. However this received signal is corrupted by bipolar zero mean Gaussian noise yielding negative receiver output values when negative valued noise dominates over positive valued electrical received signal. If an estimate of transmitted radiant flux is made without first clipping negative valued receiver output to zero, the estimate yields negative flux values. An estimate of transmitted chromaticity coordinates made with these flux values causes some of the estimated constellation points to be located outside the gamut. If the receiver output is clipped to zero, estimated chromaticity coordinates are now illustrated in \figurename\ref{figRcvSym}(\subref{fig4RcvSymY0}), (\subref{fig8RcvSymY0}) and (\subref{fig16RcvSymY0}). The simulation results did not indicate any significant change in performance between the two received signal processing techniques.
 
 While this linear system model is instructive to study CSK modulation and carry out a first order performance analysis, a practical CSK system is non-linear due to non-linearity of the CIE 1931 XYZ space. The (x$_{p}$,y$_{p}$) to P$_{i}$, P$_{j}$, P$_{k}$ block at the transmitter and its counterpart at the receiver (red colored dashed blocks in \figurename\ref{figCSKBD}) introduce this non-linearity which significantly alters the CSK performance for a practical implementation. The effects of these practical constraints on a CSK system are studied in next few sections.
 
@@ -358,7 +376,7 @@ To understand the source of non-linearity in the CSK system, let's take a look a
 
 \begin{figure}[b]
 	\centering
-		\includegraphics[trim={0.05in 0.05in 0.05in 0.05in}, clip=true, width=2.9in]{CIE1931CMF.eps}
+		\includegraphics[trim={0.05in 0.05in 0.05in 0.05in}, clip=true, width=2.4in]{CIE1931CMF.eps}
 	\caption{CIE 1931 XYZ color matching functions.}
 	\label{figCIEXYZ}
 \end{figure}
@@ -387,19 +405,19 @@ CIE 1931 specification outlines three color matching functions - $x_{c}(\lambda)
 	\centering
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			\includegraphics[trim={0.0in 0.0in 0.1in 0.3in}, clip=true, width=\textwidth]{M04_4-CSK_BERvsSNR_NL.eps}
+			\includegraphics[trim={0.1in 0.0in 0.5in 0.3in}, clip=true, width=\textwidth]{M04_4-CSK_BERvsSNR_NL.eps}
 			\caption{4-CSK}
 			\label{fig4SNR_NL}
 		\end{subfigure}
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			\includegraphics[trim={0.0in 0.0in 0.1in 0.3in}, clip=true, width=\textwidth]{M08_8-CSK_BERvsSNR_NL.eps}
+			\includegraphics[trim={0.1in 0.0in 0.5in 0.3in}, clip=true, width=\textwidth]{M08_8-CSK_BERvsSNR_NL.eps}
 			\caption{8-CSK}
 			\label{fig8SNR_NL}
 		\end{subfigure}
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			\includegraphics[trim={0.0in 0.0in 0.1in 0.3in}, clip=true, width=\textwidth]{M16_16-CSK_BERvsSNR_NL.eps}
+			\includegraphics[trim={0.1in 0.0in 0.5in 0.3in}, clip=true, width=\textwidth]{M16_16-CSK_BERvsSNR_NL.eps}
 			\caption{16-CSK}
 			\label{fig16SNR_NL}
 		\end{subfigure}
@@ -411,41 +429,38 @@ CIE 1931 specification outlines three color matching functions - $x_{c}(\lambda)
 	\centering
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			%\includegraphics[trim={0.0in 0.0in 0.1in 0.3in}, clip=true, width=\textwidth]{M04_4-CSK_CBC1_ReceivedSymbols9_NL.eps}
-			\includegraphics[trim={4.7in 0.3in 4.5in 0.3in}, clip=true, width=\textwidth]{M04_4-CSK_CBC1_ReceivedSymbols9_NL.eps}
+			\includegraphics[trim={1.0in 0.0in 1.3in 0.1in}, clip=true, width=\textwidth]{M04_4-CSK_CBC1_ReceivedSymbols9_NL.eps}
 			\caption{CBC$_{1}$: 4-CSK}
 			\label{fig4RcvSym_NL}
 		\end{subfigure}
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			%\includegraphics[trim={0.0in 0.0in 0.1in 0.3in}, clip=true, width=\textwidth]{M08_8-CSK_CBC1_ReceivedSymbols11_NL.eps}
-			\includegraphics[trim={4.7in 0.3in 4.5in 0.3in}, clip=true, width=\textwidth]{M08_8-CSK_CBC1_ReceivedSymbols9_NL.eps}
+			\includegraphics[trim={1.0in 0.0in 1.3in 0.1in}, clip=true, width=\textwidth]{M08_8-CSK_CBC1_ReceivedSymbols10_NL.eps}
 			\caption{CBC$_{1}$: 8-CSK}
 			\label{fig8RcvSym_NL}
 		\end{subfigure}
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			%\includegraphics[trim={0.0in 0.0in 0.1in 0.3in}, clip=true, width=\textwidth]{M16_16-CSK_CBC1_ReceivedSymbols11_NL.eps}
-			\includegraphics[trim={4.7in 0.3in 4.5in 0.3in}, clip=true, width=\textwidth]{M16_16-CSK_CBC1_ReceivedSymbols10_NL.eps}
+			\includegraphics[trim={1.0in 0.0in 1.3in 0.1in}, clip=true, width=\textwidth]{M16_16-CSK_CBC1_ReceivedSymbols10_NL.eps}
 			\caption{CBC$_{1}$: 16-CSK}
 			\label{fig16RcvSym_NL}
 		\end{subfigure}
 		%%%%%%%%% CBC8 %%%%%
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			\includegraphics[trim={4.7in 0.3in 4.5in 0.3in}, clip=true, width=\textwidth]{M04_4-CSK_CBC8_ReceivedSymbols3_NL.eps}
+			\includegraphics[trim={1.0in 0.0in 1.3in 0.1in}, clip=true, width=\textwidth]{M04_4-CSK_CBC8_ReceivedSymbols4_NL.eps}
 			\caption{CBC$_{8}$: 4-CSK}
 			\label{fig4RcvSym_NL8}
 		\end{subfigure}
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			\includegraphics[trim={4.7in 0.3in 4.5in 0.3in}, clip=true, width=\textwidth]{M08_8-CSK_CBC8_ReceivedSymbols3_NL.eps}
+			\includegraphics[trim={1.0in 0.0in 1.3in 0.1in}, clip=true, width=\textwidth]{M08_8-CSK_CBC8_ReceivedSymbols4_NL.eps}
 			\caption{CBC$_{8}$: 8-CSK}
 			\label{fig8RcvSym_NL8}
 		\end{subfigure}
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			\includegraphics[trim={4.7in 0.3in 4.5in 0.3in}, clip=true, width=\textwidth]{M16_16-CSK_CBC8_ReceivedSymbols3_NL.eps}
+			\includegraphics[trim={1.0in 0.0in 1.3in 0.1in}, clip=true, width=\textwidth]{M16_16-CSK_CBC8_ReceivedSymbols4_NL.eps}
 			\caption{CBC$_{8}$: 16-CSK}
 			\label{fig16RcvSym_NL8}
 		\end{subfigure}
@@ -487,22 +502,19 @@ where \vm{X}$_{b}$ is the average radiant flux emitted by C$_b$. Thus, after com
 	\centering
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			\includegraphics[trim={0.0in 0.0in 0.1in 0.38in}, clip=true, width=\textwidth]{M04_4-CSK_BERvsLSNR_NL.eps}
-			%\includegraphics[trim={0.0in 0.0in 0.1in 0.33in}, clip=false, width=\textwidth]{M04_4-CSK_BERvsLSNR_NL.eps}
+			\includegraphics[trim={0.1in 0.0in 0.5in 0.1in}, clip=true, width=\textwidth]{M04_4-CSK_BERvsLSNR_NL.eps}
 			\caption{4-CSK}
 			\label{fig4LSNR}
 		\end{subfigure}
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			\includegraphics[trim={0.0in 0.0in 0.1in 0.38in}, clip=true, width=\textwidth]{M08_8-CSK_BERvsLSNR_NL.eps}
-			%\includegraphics[trim={0.0in 0.0in 0.1in 0.33in}, clip=false, width=\textwidth]{M08_8-CSK_BERvsLSNR_NL.eps}
+			\includegraphics[trim={0.1in 0.0in 0.5in 0.1in}, clip=true, width=\textwidth]{M08_8-CSK_BERvsLSNR_NL.eps}
 			\caption{8-CSK}
 			\label{fig8LSNR}
 		\end{subfigure}
 		\begin{subfigure}{0.32\textwidth}
 		\centering
-			\includegraphics[trim={0.0in 0.0in 0.1in 0.38in}, clip=true, width=\textwidth]{M16_16-CSK_BERvsLSNR_NL.eps}
-			%\includegraphics[trim={0.0in 0.0in 0.1in 0.33in}, clip=false, width=\textwidth]{M16_16-CSK_BERvsLSNR_NL.eps}
+			\includegraphics[trim={0.1in 0.0in 0.5in 0.1in}, clip=true, width=\textwidth]{M16_16-CSK_BERvsLSNR_NL.eps}
 			\caption{16-CSK}
 			\label{fig16LSNR}
 		\end{subfigure}
