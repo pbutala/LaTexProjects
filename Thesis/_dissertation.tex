@@ -1,0 +1,81 @@
+% BU ECE template for MS thesis and PhD dissertation.
+%
+%==========================================================================%
+% MAIN PREAMBLE 
+%==========================================================================%
+\documentclass[12pt,letterpaper]{report}          % Single-sided printing for the library
+%\documentclass[12pt,twoside]{report} % Double-sided printing
+\include{_preamble}
+
+%==========================================================================%
+% BEGIN
+%==========================================================================%
+\begin{document}
+%\include{marginCheck}
+%\cleardoublepage
+% The preliminary pages
+\include{_Prelim/prelim}        
+\cleardoublepage
+
+% -------------------------------------
+% CHAPTER 1: INTRODUCTION
+% -------------------------------------
+\include{_Intro/intro}
+\cleardoublepage
+
+%% -------------------------------------
+%% CHAPTER: THE BODY OF THESIS (REPLACE WITH ACTUAL CHAPTERS)
+%% -------------------------------------
+%\include{_Body/body}
+%\cleardoublepage
+
+% -------------------------------------
+% CHAPTER 2: SISO
+% -------------------------------------
+\include{_SISO/_siso}
+\cleardoublepage
+
+% -------------------------------------
+% CHAPTER 3: MIMO-Space
+% -------------------------------------
+\include{_MIMOSpace/_mimoSpace}
+\cleardoublepage
+
+% -------------------------------------
+% CHAPTER 4: MIMO-Color
+% -------------------------------------
+\include{_MIMOColor/_mimoColor}
+\cleardoublepage
+
+% -------------------------------------
+% CHAPTER 5: System
+% -------------------------------------
+\include{_System/_system}
+\cleardoublepage
+
+% -------------------------------------
+% CHAPTER LAST: CONCLUSION
+% -------------------------------------
+\include{_Conclusion/conclusion}
+\cleardoublepage
+
+%\appendix
+\begin{appendices}
+\include{Appendix/Appendix}
+\end{appendices}
+%==========================================================================%
+% Bibliography
+\newpage
+\singlespace
+\bibliographystyle{apalike}
+
+% each subdirectory can have its own BiBTeX file
+\bibliography{dissertation}
+\cleardoublepage
+
+%==========================================================================%
+% Curriculum Vitae
+\include{_Prelim/cv} 
+
+%==========================================================================%
+\end{document}

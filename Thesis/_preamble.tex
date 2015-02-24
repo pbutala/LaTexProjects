@@ -1,10 +1,6 @@
-% BU ECE template for MS thesis and PhD dissertation.
-%
 %==========================================================================%
-% MAIN PREAMBLE 
+% PREAMBLE 
 %==========================================================================%
-\documentclass[12pt,letterpaper]{report}          % Single-sided printing for the library
-%\documentclass[12pt,twoside]{report} % Double-sided printing
 \usepackage[intlimits]{amsmath}
 \usepackage{amsfonts,amssymb}
 \DeclareSymbolFontAlphabet{\mathbb}{AMSb}
@@ -23,6 +19,8 @@
 \usepackage{xspace}
 \usepackage{epstopdf} 
 \usepackage{subfig}
+\usepackage{color}
+\usepackage{longtable}
 %==========================================================================%
 %%% graphicx and pdf creation
 \usepackage{graphicx}
@@ -52,52 +50,3 @@
 %\newcommand{\chapref}[1]{Chapter~\ref{#1}}
 %\newcommand{\latex}{\LaTeX\xspace}
 %==========================================================================%
-
-%==========================================================================%
-% BEGIN
-%==========================================================================%
-\begin{document}
-\include{marginCheck}
-\cleardoublepage
-% The preliminary pages
-\include{0_Prelim/prelim}        
-\cleardoublepage
-
-% -------------------------------------
-% CHAPTER 1: INTRODUCTION
-% -------------------------------------
-\include{1_Intro/intro}
-\cleardoublepage
-
-% -------------------------------------
-% CHAPTER 2: THE BODY OF THESIS
-% -------------------------------------
-\include{2_Body/body}
-\cleardoublepage
-
-% -------------------------------------
-% CHAPTER 3: CONCLUSION
-% -------------------------------------
-\include{3_Conclusion/conclusion}
-\cleardoublepage
-
-%\appendix
-\begin{appendices}
-\include{Appendix/Appendix}
-\end{appendices}
-%==========================================================================%
-% Bibliography
-\newpage
-\singlespace
-\bibliographystyle{apalike}
-
-% each subdirectory can have its own BiBTeX file
-\bibliography{thesis}
-\cleardoublepage
-
-%==========================================================================%
-% Curriculum Vitae
-\include{0_Prelim/cv} 
-
-%==========================================================================%
-\end{document}
