@@ -1,0 +1,27 @@
+\section{Related work}
+\label{sec:related}
+\graphicspath{{_Intro/Figures/}}
+
+\subsection{LED Bandwidth}
+\label{relatedBandwidth}
+At conventional office lighting illumination levels (400 lux), a single-input single-output (SISO) optical communication channel operates at a high signal to noise ratio (SNR) but is limited in its capacity due to the inherent low switching speeds of high brightness LEDs used for illumination (~1-2 MHz). In a phosphor converted white LED, while the blue LED can be modulated at higher frequencies, the phosphor conversion procecess is a relatively slow process thus limiting the bandwidth of the LED. \cite{gru08b} used a blue filter at the receiver to extract just the blue part of the incident spectrum and thus improve the modulation  3dB bandwidth of the LED to about 20 MHz; however at the cost of the received signal power.  In \cite{min08a}, the authors use resonance equalization at the transmitter to achieve an overall  3dB bandwidth of about 25 MHz. In \cite{zen08a}, the authors use an equilizer at the receiver to extend the channel  3dB bandwidth to about 50 MHz.
+
+\subsection{Spectral Efficiency}
+\label{relatedSpectral}
+Another way to increase the datarate of a SISO link is to improve the spectral efficiency of the channel. For this, spectrally efficient complex modulation schemes like OFDM or DMT implemented in the RF domain have been modified to meet the optical constraints \cite{vuc09a,mes10a,mes10b,dis11a}. In DCO-OFDM (MSM) \cite{car96a}, a DC bias is added to a real valued time domain OFDM symbol to minimize signal clipping. While this technique does increase the spectral efficiency, it is power inefficient. In ACO-OFDM \cite{arm06a}, half the spectral efficiency of DCO-OFDM is sacrificed for power efficiency. In this technique, data is assigned to only the odd subcarriers and the time domain OFDM symbol is clipped below 0. Noise introduced due to clipping in this manner has been shown to be orthogonal to the signal. The entire symbol (with additive noise) can be reconstructed at the receiver and transmitted data can be recovered. 
+
+\subsection{Experimental Implementations}
+\label{relatedExperiments}
+In \cite{vuc10a}, the authors experimentally achieve 513 Mbps data rates over a SISO link for BER $\leq 2\times10^{-3}$. The transmitter implemented DMT with 127 subcarriers within a bandwidth of 100 MHz (beyond the 3dB bandwidth); each moduated with different M-QAM constellation based on bit and power loading. An equalizer was implemented at the receiver based on the estimated channel. The system was operated at 1000 lx illumination at the receiver.
+
+In \cite{cos12a}, the authors experimentally achieve 1.5 Gbps for a SISO link and 3.4 Gbps data rates over a WDM MIMO link for BER $\leq 2*10^{-3}$ using commercial RGB LED. In both cases, the transmitter implemented DMT with 512 subcarriers within a bandwidth of 250 MHz; each moduated with different M-QAM constellation based on bit and power loading. An equalizer was implemented at the receiver based on the estimated channel. The system was operated at 410 lx illumination at the receiver.
+
+For SM, a non-imaging receiver suffers from outages at symmetry points. At the same time the channel matrix is ill-conditioned \cite{zen09a}.  While coverage can be improved using angle diversity receivers \cite{car00a}, the performance can be enhanced remarkably by considering an imaging receiver to decorrelate the coefficients of the MIMO channel matrix \cite{dja00a}. The imaging receiver architecture \cite{kah98a} has the potential to provide the highest capacity for a VLC channel along being incorporated in a handheld device. 
+
+A spatial multiplexing indoor MIMO technique for VLC technology using OFDM and a imaging receiver is considered in \cite{azh13a}. Here a 4x9 MIMO system is implemented. Here, the four transmitters implement DCO-OFDM with 32 subcarriers within a bandwidth of 4 MHz; each modulated with M-QAM symbols. Blue filtering and equalization is implemented at the receiver. The authors experimentally achieve 1 Gbps tramsmission with average BER $\leq 10^{-3}$ at an illumination of 1000 lx. 
+
+\subsection{IEEE 802.15 Task Group 7}
+\label{relatedStandard}
+The IEEE 802.15.7 task group has drafted MAC and PHY standards to support free space optical communications. These specifications enable high data rate communications along with dimming. The current LED infrastructure can support the PHY\rmnum{3} specifications \cite{raj12a}. The proposed modulation scheme is CSK. In CSK, bits are encoded in the color that the luminaire produces. To transmit a bit sequence, the luminaire produces different colors which are averaged out by the human eye to produce the 'white' set point. The standard supports 16-CSK at 24 MHz clock rate which can provide data rates upto 96 Mb/s.
+
+Since the source data drives the luminaires to produce different colors, data dependent color shift is an inherent issue within CSK. Metameric modulation \cite{but12a} is a scheme that mitigates this issue while achieving the same spectral efficiency as CSK.

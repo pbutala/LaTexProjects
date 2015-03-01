@@ -1,0 +1,173 @@
+\section{Multi-wavelength system design}
+\label{sec:wdmSystem}
+\graphicspath{{_System/figures_wdm/}}
+
+\subsection{Wavelength Division Multiplexing}
+\label{subsec:wdmSystemWdm}
+
+Different colors including shades of white for illumination on the black body radiation curve can be produced by mixing different amounts of narrow-band SPDs emitted by different sources. The ability to combine multiple narrow-band sources to generate white light also provides the benefit of being able to transmit concurrent information streams over different color groups; thus enabling WDM. 
+
+Lasers and LEDs produce a much smaller SPD spread as compared to incandescent and fluorescent sources and are thus preferable for WDM. LED emission can be modeled with a Gaussian distribution as in Eq. (\ref{eqSPDGaussian}) while laser emission can be modeled with a Lorentzian distribution as in Eq. (\ref{eqSPDLorentzian}). Equations in (\ref{eqSPD}) model emission spectra for the $j^{th}$ transmitting element.
+\begin{subequations}
+\begin{align}
+S_j(\lambda) &= \frac{1}{\sqrt{2\pi\sigma_j^2}}exp\left[-\frac{(\lambda-\lambda_j)^2}{2\sigma_j^2}\right]\label{eqSPDGaussian}\\
+S_j(\lambda) &= \frac{1}{\pi}\frac{0.5\Gamma_j}{(\lambda-\lambda_j)^2 + (0.5\Gamma_j)^2}\label{eqSPDLorentzian}
+\end{align}
+\label{eqSPD}
+\end{subequations}
+where $\lambda_j$ is the dominant wavelength of emission, $\sigma_j$ is the measure of spread (deviation) from the dominant wavelength for the Gaussian model, and $\Gamma_j$ is the FWHM from the dominant wavelength for the Lorentzian model. At small SPD spread, most of the optical power is emitted at the dominant wavelength. At larger SPD spread the optical power is distributed across a larger wavelength range and starts overlapping across different transmitting elements, thus causing interference.
+
+To generate white light $W(\lambda)$, emissions from different transmitting elements are weighted by factor $t_j$ before being mixed together. The resulting spectrum is given by
+\begin{equation}
+	\label{eqWhite}
+	W(\lambda) = \sum_{j=1}^{N_{tx}}t_jS_j(\lambda)
+\end{equation}
+
+\begin{figure}[!b]
+	\centering
+		\includegraphics[trim={0.05in 0.05in 0.05in 0.05in}, clip=true, width=2.9in]{CIE1931CMF.eps}
+	\caption{CIE XYZ 1931 model color matching functions}
+	\label{fig:CIE1931CMF}
+\end{figure}
+
+The \textit{commission internationale de l'$\acute{e}$clairage} (CIE) specified the CIE 1931 XYZ color space. It maps an SPD to a color representation as sensed by the human eye. The standard defines three color matching functions $x_c(\lambda)$, $y_c(\lambda)$, and $z_c(\lambda)$ as shown in \figurename{ \ref{fig:CIE1931CMF}}. The tristimulus values for the XYZ primaries are given by
+\setlength{\arraycolsep}{0.0em}
+\begin{subequations}
+\begin{align}
+X_W &= \int_{\lambda_{min}}^{\lambda_{max}}W(\lambda)x_c(\lambda)d\lambda\\
+Y_W &= \int_{\lambda_{min}}^{\lambda_{max}}W(\lambda)y_c(\lambda)d\lambda\\
+Z_W &= \int_{\lambda_{min}}^{\lambda_{max}}W(\lambda)z_c(\lambda)d\lambda
+\end{align}
+\label{eqTriStimulus}
+\end{subequations}
+\setlength{\arraycolsep}{5pt}
+
+A color can be expressed in terms of its chromaticity and luminance. Chromaticity coordinates capture the hue and saturation of the color while luminance captures the amount of light in the color. The chromaticity coordinates for the SPD can be then be computed from the tristimulus values as
+\begin{equation}
+\label{eqChromaticity}
+	\vecttwo{x}{y} = \frac{1}{X_W+Y_W+Z_W}\vecttwo{X_W}{Y_W}
+\end{equation}
+
+The spectral radiance of a black body heated to temperature $T$ as stated by Planck's law is given by
+\begin{equation}
+\label{eqPlanck}
+	 S(\lambda) = \frac{2hc^2}{\lambda^5\left[\text{exp}\left(\frac{hc}{\lambda kT}\right)-1\right]}
+\end{equation}
+where $h$ is the Planck's constant, $c$ is speed of light, and $k$ is Boltzmann's constant. Replacing $W(\lambda)=S(\lambda)$ in Eq.(\ref{eqTriStimulus}) and then from Eq.(\ref{eqChromaticity}) we obtain the CIE 1931 XYZ chromaticity values $[x,y]$ associated with a black body heated to temperature $T$. In this context $T$ is also known as the CCT for color represented by $[x,y]$. Note that two different SPDs can generate the same chromaticity coordinates. This is due to the principle of metamerism.
+
+Traditionally luminaires have been specified to generate a certain CCT with colors at lower temperature appearing (ironically) warmer than those at higher temperatures. It is practical to generate colors off the black body radiation curve using different colored sources. This analysis considers only the colors generated on the black body radiation curve. As the CCT changes from a lower value to a higher value, the optical power available to transmit information on any color channel varies thus affecting the overall communication performance.
+
+Optical filters can be manufactured to permit narrow-bandpass filtering using plasmonics \cite{xu10a,yok12a}. Broad-bandpass optical filters that make use of interference are widely available. The transmittance of these filters can be modeled as Lorentzian functions of wavelength. The choice of the filter FWHM is a tradeoff to collect the maximum signal while rejecting interference and background illumination.
+
+Responsivity of the receiving elements also affects the aggregate system performance. It depends on the quantum efficiency of the material of sensor. Reference \cite{gha12a} computes responsivity as
+\begin{equation}
+\label{eqResponsivity}
+	 R(\lambda) = \frac{\xi\lambda}{1240}
+\end{equation}
+where $\xi$ is the quantum efficiency of the material, and $\lambda$ is wavelength of interest. For equal signal radiant flux, signals that span wavelength ranges with lower responsivity will perform poorly as compared to the rest. 
+
+Optical spectrum outside the visible range like infrared (IR) and ultraviolet (UV) spectrum can also be utilized for WDM. It can be seen from \figurename{\ref{fig:CIE1931CMF}} that IR and UV do not generate chromatic response on human eye and thus do not contribute to visible illumination. Thus, as long as their emissions satisfy eye and skin safety regulations, using this additional optical spectrum can only boost the channel capacity.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% SIMULATION %%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Analysis}
+\label{subsec:wdmSystemAnalysis}
+Simulations are performed to study how the choice of design parameters like illumination CCT, transmitter SPD, and filter FWHM affect the performance of a multi-wavelength VLC system. Three transmitting elements with Gaussian emission spectrum at dominant wavelengths of red (627 nm), green (530 nm) and blue (470 nm) are selected. Using these transmitting elements, CCT range of [2500 7000] K is sought. SPD spread within [5 50] nm is considered. \figurename{\ref{fig:LEDSPD}} illustrates normalized SPDs needed to achieve the range of CCTs for transmitting elements with 5 nm spread.
+
+\begin{figure}[!t]
+	\centering
+		\includegraphics[trim={0.05in 0.05in 0.05in 0.0in}, clip=true, width=2.9in]{LEDSPD.eps}
+	\caption{Transmitting element normalized spectral power distribution}
+	\label{fig:LEDSPD}
+\end{figure}
+
+Unique $t_R:t_G:t_B$ ratios are generated after varying the tristimulus values in the range [0 1] in 0.1 unit steps. By substituting these values in Eq.(\ref{eqWhite})-Eq.(\ref{eqChromaticity}), chromaticity coordinates for resulting SPDs are calculated. An initial characterization step generates a pre-populated table consisting of the tristimulus values and corresponding chromaticity coordinates. As the CCT is varied, the chromaticity coordinates are pre-computed. From the pre-computed table, the tristimulus values that achieve the closest chromaticity are selected. The SPD is then scaled to achieve target illumination (400 lx) at the receiver that is located at a distance of 2 m from the transmitter. The surface normals of the transmitter and receiver are assumed to be parallel.
+
+\begin{figure}[!b]
+	\centering
+		\includegraphics[trim={0.15in 0.05in 0.05in 0.35in}, clip=true, width=2.9in]{FiltTr.eps}
+	\caption{Filter transmittance for full width at half maximum = 40nm}
+	\label{fig:FiltTr}
+\end{figure}
+
+Optical filter's passband can be designed to center on the transmitting elements' dominant wavelengths. Optical filters for the simulation are modeled to have Lorentzian transmittance with ideal value $1$ at the dominant red, green and blue wavelengths mentioned above. Filter transmittance as a function of wavelength is illustrated in \figurename{\ref{fig:FiltTr}}. Filter FWHM considered for the analysis lie in [1 250] nm range.
+
+\begin{figure}[!t]
+	\centering
+		\includegraphics[trim={0.15in 0.05in 0.05in 0.0in}, clip=true, width=2.9in]{RecvResp.eps}
+	\caption{Receiver quantum efficiency and responsivity}
+	\label{fig:RecvResp}
+\end{figure}
+% online source \cite{qeff}
+The receiver sensor is assumed to be made of silicon. The assumed quantum efficiencies and responsivity of the sensor taken from online source is illustrated in \figurename{\ref{fig:RecvResp}}. The responsivity near the blue wavelength is about 0.29 A.W$^{-1}$ and increases steadily to about 0.46 A.W$^{-1}$ near the red before rapidly reducing as the energy of the incident photon approaches the bandgap energy of silicon.
+
+To analyze the system performance with reasonable number of iterations, transmitting and receiving elements are restricted to the same deviations about their respective means. A random bit stream is then generated. Bits for each link are then communicated using asymmetrically clipped offset and DC-biased optical orthogonal frequency division multiplexing (ACO-OFDM and DCO-OFDM). Details on these optical OFDM techniques can be found in references \cite{car96a,arm06a}. For this simulation, ACO-OFDM and DCO-OFDM are implemented with 64 sub-carriers and 64-QAM and 8-QAM modulation, respectively. This ensures that both schemes achieve similar bits/symbol with ACO-OFDM achieving 96 bits/symbol and DCO-OFDM achieving 93 bits/symbol. The DC level on each link is set to ensure the desired CCT is achieved at the 400 lx illumination level. This generates the transmit vector $\vm{X}$. 
+
+Having established $N_{tx} = 3$ transmitting and $N_{rx} = 3$ receiving elements, the $3\times 3$ channel matrix $\vm{H}$ can be computed. AWGN vector $\vm{W}$ is generated and is then added to the transmitted vector. With the knowledge of the transmitted signal power and by varying the receiver noise, simulations over a range of $\text{SNR}^{\text{tx}}_{\text{avg}}$ are carried out. Vector \vm{Y} then collects the received signal and the added noise and interference. The least squares estimate of the transmitted signal vector is computed as
+\begin{equation}
+	\label{eqXhat}
+	\hat{\vm{X}} = (\vm{H}^{*}\vm{H})^{-1}\vm{H}^{*}\vm{Y}
+\end{equation}
+An estimate of the transmitted optical OFDM frame for each color is obtained by aggregating least squares estimates of the received signal vectors. Further signal processing on each optical OFDM frame gets an estimate of the transmitted QAM symbol. Decoding the QAM symbols provides an estimate of the transmitted bits. Bit error rate (BER) is then calculated by comparing the transmit and estimated bit streams.
+
+\begin{figure}[t]
+	\centering
+		\begin{subfigure}{0.49\textwidth}
+		\centering
+			\includegraphics[trim={0.15in 0.05in 0.05in 0.35in}, clip=true, width=2.9in]{SNRvsCCT.eps}
+			\caption{Most power efficient operation point}
+			\label{subfig:SNRvsCCThigh}
+		\end{subfigure}
+		%\hfill
+		\begin{subfigure}{0.49\textwidth}
+		\centering
+			\includegraphics[trim={0.15in 0.05in 0.05in 0.35in}, clip=true, width=2.9in]{SNRvsCCT2.eps}
+			\caption{High inter-channel interference}
+			\label{subfig:SNRvsCCTlow}
+		\end{subfigure}
+	\caption{$\text{SNR}^{\text{tx}}_{\text{avg}}$ vs correlated color temperature to achieve BER $\leq 10^{-3}$ \newline(a) Transmitter: $\sigma_r = \sigma_g = \sigma_b = 5$ nm; Filter: $\Gamma_r = \Gamma_g = \Gamma_b = 40$ nm (b) Transmitter: $\sigma_r = \sigma_g = \sigma_b = 50$ nm; Filter: $\Gamma_r = \Gamma_g = \Gamma_b = 250$ nm}
+\label{fig:SNRvsCCT}
+\end{figure}
+
+%\begin{figure*}[!t]
+%\centerline{\subfloat[Most power efficient operation point]{\includegraphics[trim={0.15in 0.05in 0.05in 0.35in}, clip=true, width=2.9in]{SNRvsCCT.eps} \label{subfig:SNRvsCCThigh}}
+%\hfill
+%\subfloat[High inter-channel interference]{\includegraphics[trim={0.15in 0.05in 0.05in 0.35in}, clip=true, width=2.9in]{SNRvsCCT2.eps} \label{subfig:SNRvsCCTlow}}}
+%\caption{$\text{SNR}^{\text{tx}}_{\text{avg}}$ vs correlated color temperature to achieve BER $\leq 10^{-3}$ \newline(a) Transmitter: $\sigma_r = \sigma_g = \sigma_b = 5$ nm; Filter: $\Gamma_r = \Gamma_g = \Gamma_b = 40$ nm (b) Transmitter: $\sigma_r = \sigma_g = \sigma_b = 50$ nm; Filter: $\Gamma_r = \Gamma_g = \Gamma_b = 250$ nm}
+%\label{fig:SNRvsCCT}
+%\end{figure*}
+%\global\let\figone\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% RESULTS %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Results and Discussion}
+\label{subsec:wdmSystemResults}
+For each unique configuration yielded by varying the parameters, BER versus $\text{SNR}^{\text{tx}}_{\text{avg}}$ is empirically determined using monte-carlo simulations. Based on the simulation setup, the path-loss from the transmitting elements to the receiving elements is about 145 dB. To plot the change in system performance when each parameter is varied, the minimum $\text{SNR}^{\text{tx}}_{\text{avg}}$ needed to achieve target BER $\leq 10^{-3}$ is selected. Since ACO-OFDM is more power efficient compared to DCO-OFDM, for all the cases discussed below, ACO-OFDM needs lower transmit signal power to achieve the target BER as compared to DCO-OFDM.
+
+The change in performance of the red, green and blue links as the CCT is varied from 2500 K to 7000 K is shown in \figurename{\ref{fig:SNRvsCCT}}. At 2500K, the SPD has a greater contribution from red, then green and then blue. Thus the red link achieves target BER at lower transmitted signal power. As the CCT increases, relative signal power from the red link decreases, that of the green remains similar, and that of the blue increases. Thus, with increase in CCT, the amount of aggregate transmit flux needed to achieve target BER from the red link starts increasing, that of the green remains relatively unchanged, while that of the blue decreases. For the specified multi-wavelength system, CCT = 6250 K provides the most power efficient operating point as illustrated in \figurename{\ref{subfig:SNRvsCCThigh}}. Increasing the transmitting elements' SPD or the filter FWHM introduces increasingly more inter-channel interference (ICI). This causes the most power efficient operating point to shift towards CCT = 3500 K but with greater power requirements as seen in \figurename{\ref{subfig:SNRvsCCTlow}}.
+
+\begin{figure}[!b]
+	\centering
+		\includegraphics[trim={0.15in 0.05in 0.05in 0.35in}, clip=true, width=2.9in]{SNRvsLEDSD.eps}
+	\caption{$\text{SNR}^{\text{tx}}_{\text{avg}}$ vs transmitting element spectral power distribution spread to achieve BER $\leq 10^{-3}$\newline Filter: $\Gamma_r = \Gamma_g = \Gamma_b = 40$ nm; CCT = 6250 K}
+	\label{fig:SNRvsLEDSD}
+\end{figure}
+
+The change in performance of the red, green and blue links as the transmitting element SPD spread is varied from 5 nm to 50 nm is shown in \figurename{\ref{fig:SNRvsLEDSD}}. As the SPD spread is increased, the performance of all three links degrade. This can be attributed to two factors. Initially, as the signal power is distributed across a larger wavelength range, with the filter transmittance function remaining the same, increasingly more signal gets rejected by the filter. Thus the receiver collects a smaller fraction of the signal power, degrading the performance. Secondly, as the individual SPDs spread enough, they start overlapping and causing ICI. The effect of ICI is more pronounced on the green link because it gets interference from both, red and blue. Thus transmitter consisting of transmitting elements with narrower emission spectra are more power efficient efficient than those with wider emission spectra. Experiments in reference \cite{neu11a} qualitatively measure color perception for illumination with narrow-band sources and find lasers could be used for general lighting. However, it is also commonly believed that sources with spiky emission spectra do not produce good quality of illumination because objects with reflectance spectra lying outside the spikes in the illumination spectra will be perceived to be poorly lit. The choice of the transmitting elements' SPD spread would be a tradeoff between the communication and illumination performance. For the specified multi-wavelength system, SPD spread = 5 nm provides the most power efficient operating point.
+
+\begin{figure}[!t]
+	\centering
+		\includegraphics[trim={0.15in 0.05in 0.05in 0.35in}, clip=true, width=2.9in]{SNRvsFLTWID.eps}
+	\caption{$\text{SNR}^{\text{tx}}_{\text{avg}}$ vs filter full width at half maximum to achieve BER $\leq 10^{-3}$\newline Transmitter: $\sigma_r = \sigma_g = \sigma_b = 5$ nm; CCT = 6250 K}
+	\label{fig:SNRvsFLTWID}
+\end{figure}
+
+The change in performance of the red, green and blue links as the receiving element filter FWHM is varied from 1 nm to 250 nm is shown in \figurename{\ref{fig:SNRvsFLTWID}}. As the filter FWHM increases, initially the system performance improves significantly. At these lower FWHM ranges, the filters transmit a smaller fraction of the signal to the sensors and thus performance is limited by the amount of signal power collected for each link. At higher FWHM ranges, along with additional signal, the filters permit increasingly more ambient light and interference from neighboring links, thus degrading the performance. For the specified multi-wavelength system, filter FWHM = 40 nm provides the most power efficient operating point.
+
+
+
+
+
+
+
+
+

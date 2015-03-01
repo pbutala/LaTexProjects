@@ -7,7 +7,9 @@
 %\usepackage{natbib}
 \usepackage{apalike}
 \usepackage{float}
-\usepackage[bf]{caption}       
+\usepackage{graphicx}
+\usepackage[bf]{caption}
+\usepackage{subcaption}       
 \setcaptionmargin{0.5in}
 \usepackage{fancyhdr}
 %\usepackage{fancyheadings}
@@ -21,9 +23,16 @@
 \usepackage{subfig}
 \usepackage{color}
 \usepackage{longtable}
+\usepackage{multirow}
+%\usepackage{floatrow}
+%\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+\usepackage{blindtext}
+\usepackage{array}
+\usepackage{pdflscape}
+\usepackage{afterpage}
+\usepackage{threeparttable}
 %==========================================================================%
 %%% graphicx and pdf creation
-\usepackage{graphicx}
 \usepackage{appendix}
 %\usepackage{psfrag}
 %\DeclareGraphicsExtensions{.eps}   % extension for included graphics
@@ -49,4 +58,64 @@
 %\newcommand{\figref}[1]{Figure~\ref{#1}}
 %\newcommand{\chapref}[1]{Chapter~\ref{#1}}
 %\newcommand{\latex}{\LaTeX\xspace}
+\makeatletter
+\newcommand*{\rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+\newcommand{\vm}[1]{{\bf{#1}}}
+\newcommand{\vect}[1]{\overline {#1}}
+\newcommand{\C}[1]{{\color{blue}#1}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\idxmin}{\operatornamewithlimits{idxmin}}
+\newcommand{\idxmax}{\operatornamewithlimits{idxmax}}
+%\renewcommand{\citedash}{--}
+\newcommand{\twopartdef}[4]
+{
+	\left\{
+		\begin{array}{ll}
+			#1 &; #2 \\
+			#3 &; #4
+		\end{array}
+	\right.
+}
+\newcommand{\vecttwo}[2]
+{
+\left[
+\begin{matrix}
+#1\\
+#2
+\end{matrix}
+\right]
+}
+\newcommand{\vectthree}[3]
+{
+\left[
+\begin{matrix}
+#1\\
+#2\\
+#3
+\end{matrix}
+\right]
+}
+%\newcommand{\vecttwo}[2]
+%{
+	%\left[
+		%\begin{eqnarray*}
+		%#1\\
+		%#2
+		%\end{eqnarray*}
+	%\right]
+%}
+%\newcommand{\vectthree}[3]
+%{
+	%\left[
+		%\begin{eqnarray*}
+		%#1\\
+		%#2\\
+		%#3
+		%\end{eqnarray*}
+	%\right]
+%}
+
+%\allowdisplaybreaks
 %==========================================================================%
