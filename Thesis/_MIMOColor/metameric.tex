@@ -11,11 +11,12 @@ The human eye is a sensory organ that enables humans to perceive electromagnetic
 \end{equation}
 
 \subsection{Metameric Modulation (MM)}
+\label{subsec:metamericMM}
 Grassmann's laws \cite{gra54a} of color matching develop the theory behind the psychovisual color space spanned by cones in the human eye, henceforth called the visual color space (VCS).  This space is a subspace  of the infinite dimensional universal color space (UCS), which contains all possible SPDs. This observation leads to another interpretation of (\ref{eqAlphaCones}) - the point $[{\alpha}_{S},{\alpha}_{M},{\alpha}_{L}]$ is a projection of a given SPD $C(\lambda)$ onto the VCS. Thus it is possible for multiple different SPDs to project onto the same point within the VCS and produce the same sensations, $[{\alpha}_{S},{\alpha}_{M},{\alpha}_{L}]$, in the human eye. These SPDs are sensed as the same color by the human eye and are called metamerically equivalent.
 
 Light from three independent primary light sources can be mixed in varying amounts to generate arbitrary colors. We call this resulting color space the primary color space (PCS). The projection of the PCS onto the VCS is called the color gamut of the primaries.
 
-The purpose of metameric modulation is to encode data in the visible spectrum while maintaining a constant ambient lighting state. To achieve this, at the transmitter, we use multiple primary sets each capable of generating its own color gamut. If we have $D$ sources and each primary set is rendered with $3$ primary elements, there are ${D\choose 3}$ possible primary sets. As the number of primary sets increases, the intersection of their color gamuts quickly approaches an empty set. However we select only $N$ of the possible primary sets so that the intersection of their color gamuts contain all of the desired lighting states. \figurename{ \ref{figCIEXYZMM}} shows an example for $D=4$ and $N=2$. The two sets of primaries, $[Blue, Cyan, Red]$ and $[Blue, Green, Red]$ have a significant overlap in their color gamuts. In this case they are capable of generating a set point with two different metameric SPDs. 
+The purpose of metameric modulation is to encode data in the visible spectrum while maintaining a constant ambient lighting state. To achieve this, at the transmitter, we use multiple primary sets each capable of generating its own color gamut. If we have $D$ sources and each primary set is rendered with $3$ primary elements, there are $\binom{D}{3}$ possible primary sets. As the number of primary sets increases, the intersection of their color gamuts quickly approaches an empty set. However we select only $N$ of the possible primary sets so that the intersection of their color gamuts contain all of the desired lighting states. \figurename{ \ref{figCIEXYZMM}} shows an example for $D=4$ and $N=2$. The two sets of primaries, $[Blue, Cyan, Red]$ and $[Blue, Green, Red]$ have a significant overlap in their color gamuts. In this case they are capable of generating a set point with two different metameric SPDs. 
 
 MM requires detection and discrimination of multiple wavelengths at the receiver. The necessary photodiodes must be designed such that when different primaries are activated to generate a desired ambient color, the receiver can detect which primary set is active while the lighting state appears the same to the human eye. The following derivation details how this can be achieved. 
 \begin{figure}
@@ -114,4 +115,96 @@ The desired ambient lighting state can be specified by a point in the standard C
 
 \figurename{ \ref{figMMex}} illustrates MM using these primary sets to transmit a part of a data stream $(00011110_{2})$. This is accomplished by switching primaries in the order 1-2-4-3. This order can then be detected by analyzing the photodiode outputs and data can be decoded. The embedded MM modulation is invisible to humans due to metamerism.
 
+\subsection{Metameric Modulation with CBCs defined in IEEE 802.15.7}
+\label{subsec:metamericPerformance}
 
+\begin{figure}[t]
+	\centering
+    \includegraphics[trim={0in 0in 0in 0in}, clip=true, width=\textwidth]{MMBlockDiagram.png}
+	\caption{MM block diagram using IEEE 802.15.7 CBCs}
+	\label{figMMBD}
+\end{figure}
+
+\afterpage{%
+\clearpage
+\begin{landscape}% Landscape page
+\begin{figure}[b]
+	\centering
+		\begin{subfigure}{0.49\textwidth}
+		\centering
+			\includegraphics[trim={0.1in 0.0in 0.5in 0.1in}, clip=true, width=\textwidth]{M4_N5_4-MM_BERvsSNR.eps}
+			\caption{4-MM, $D$=5}
+			\label{fig4MM5}
+		\end{subfigure}
+		%\hfill
+		\begin{subfigure}{0.49\textwidth}
+		\centering
+			\includegraphics[trim={0.1in 0.0in 0.5in 0.1in}, clip=true, width=\textwidth]{M4_N6_4-MM_BERvsSNR.eps}
+			\caption{4-MM, $D$=6}
+			\label{fig4MM6}
+		\end{subfigure}
+		%\vfill
+		\begin{subfigure}{0.49\textwidth}
+		\centering
+			\includegraphics[trim={0.1in 0.0in 0.5in 0.1in}, clip=true, width=\textwidth]{M4_N7_4-MM_BERvsSNR.eps}
+			\caption{4-MM, $D$=7}
+			\label{fig4MM7}
+		\end{subfigure}
+		%\hfill
+		\begin{subfigure}{0.49\textwidth}
+		\centering
+			\includegraphics[trim={0.1in 0.0in 0.5in 0.1in}, clip=true, width=\textwidth]{M8_N7_8-MM_BERvsSNR.eps}
+			\caption{8-MM, $D$=7}
+			\label{fig8MM7}
+		\end{subfigure}
+	\caption{BER vs SNR for different combinations of CBC}
+	\label{figMM_BERvsSNR}
+\end{figure}
+\end{landscape}
+\clearpage% Flush page
+}
+
+Performance of metameric modulation is studied using color bands and color band combinations as defined in IEEE 802.15.7. Each set of LEDs generating a metameric color point can be implemented as a CBC. Block diagram for MM using using CBCs is illustrated in \figurename{ \ref{figMMBD}}. For an $M$-ary MM, $m=$ log$^{ }_{2}$($M$) bits from the incoming bit--stream are encoded to one out of $M$ possible CBCs. With knowledge of color set--point to generate and user requested illumination level, radiant fluxes P$_{\text{d}}; 1\leq\text{d}\leq$ D to transmit are calculated. The LED drivers then drive all LEDs to achieve desired illumination color and intensity using the CBC selected by the information to transmit. At the receivers, the incident radiant flux generates electrical signals which are used to estimate transmitted flux $\hat{\text{P}}_{\text{d}}$ over each type of LED. Using the estimated fluxes, an estimate of active set of LEDs $\hat{\text{CBC}}_{m}$ can be made to recover transmitted information. {\color{red}May need to substitute K for D.}
+
+The IEEE 802.15.7 standard defines 7 color bands. Thus for this analysis, D=7 is considered. \figurename{ \ref{figMM_BERvsSNR}} shows BER vs SNR performance for MM. For this analysis, a white chromaticity point of (1/3, 1/3) is generated with the selected CBCs. 4-MM can be implemented with K = 5, 6 or 7. 8-MM is implemented with K = 7. In absence of illumination constraint, 4-MM achieves the best performance with K = 5 using CBs from set \{0,1,2,3,4\} for CBC set \{5,6,7,8\}. Performance plots for 4-MM with K = 6 and 7 are also illustrated for comparison. Implementing 8-MM with CBCs as outlined in IEEE 802.15.7 requires about 60 dB of SNR and seems impractical. However, a different set of LEDs may be used to implement 8-MM to obtain a better performance.
+
+Performance comparison of 4-MM at same illumination intensity level is illustrated in \figurename{ \ref{figMM_BERvsSNR}}. In this case, with K = 5, 4-MM with CBs from set \{0,1,2,4,5\} for CBC set \{3,4,5,6\} outperforms others.  CBC set \{5,6,7,8\} has a high luminous efficacy as compared to  CBC set \{3,4,5,6\} and thus is constrained in radiant flux for signaling at a set illumination level. On comparing performance of 4-MM for all possible values of $K$, CBC sets \{1,2,4,5\}, \{1,2,4,6\}, \{1,2,4,7\} and \{1,2,4,8\} with $K$ = 6 perform the best.
+
+\afterpage{%
+\clearpage
+\begin{landscape}% Landscape page
+\begin{figure}[b]
+	\centering
+		\begin{subfigure}{0.49\textwidth}
+		\centering
+			\includegraphics[trim={0.1in 0.0in 0.5in 0.1in}, clip=true, width=\textwidth]{M4_N5_4-MM_BERvsLSNR.eps}
+			\caption{4-MM, $D$=5}
+			\label{fig4MM5L}
+		\end{subfigure}
+		%\hfill
+		\begin{subfigure}{0.49\textwidth}
+		\centering
+			\includegraphics[trim={0.1in 0.0in 0.5in 0.1in}, clip=true, width=\textwidth]{M4_N6_4-MM_BERvsLSNR.eps}
+			\caption{4-MM, $D$=6}
+			\label{fig4MM6L}
+		\end{subfigure}
+		%\vfill
+		\begin{subfigure}{0.49\textwidth}
+		\centering
+			\includegraphics[trim={0.1in 0.0in 0.5in 0.1in}, clip=true, width=\textwidth]{M4_N7_4-MM_BERvsLSNR.eps}
+			\caption{4-MM, $D$=7}
+			\label{fig4MM7L}
+		\end{subfigure}
+		%\hfill
+		\begin{subfigure}{0.49\textwidth}
+		\centering
+			\includegraphics[trim={0.1in 0.0in 0.5in 0.1in}, clip=true, width=\textwidth]{4-MM_BERvsLSNR.eps}
+			\caption{4-MM}
+			\label{fig4MML}
+		\end{subfigure}
+	\caption{BER vs LSNR for different combinations of CBC}
+	\label{figMM_BERvsLSNR}
+\end{figure}
+\end{landscape}
+\clearpage% Flush page
+}
