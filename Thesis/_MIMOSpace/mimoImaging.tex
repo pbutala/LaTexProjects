@@ -1,17 +1,22 @@
 \section{Optical MIMO system with imaging receiver}
 \label{sec:mimoImaging}
 
+\subsection{Optical imaging MIMO channel}
+\label{subsec:mimoImagingChannel}
+
 \graphicspath{{_MIMOSpace/figures_mimoImg/}}
 In this section, an optical MIMO imaging system as illustrated in \figurename{ \ref{figMIMOblock}} is considered. Multiple luminaires are located near the ceiling of an indoor space to provide illumination and act as transmitters for communication. Information to transmit is jointly coded across a set of luminiares within the FOV of the receiver. User requested illumination state sets the average radiant flux emitted by the transmitters. Based on these inputs, the modulator generates drive signals for each luminaire. LEDs in the luminaire convert modulated data in the electrical domain into optical signals in the visible spectrum (E/O and conversely O/E conversion). These optical signals propagate through the indoor space and are incident on the receiver. 
 
-\figurename{ \ref{figImagingReceiver}} illustrates a schematic of an imaging receiver. An imaging receiver for OWC can be modeled as a sensor and imaging optics. The sensor is located at a distance $f$ away from the optical center of the lens and is comprised of a grid of detector elements - each referred to as a `pixel'. Each pixel is comprised of a filter and optical detector. The imaging optics redirect light rays originating from different of an irradiating planar surface such that they are incident on corresponding different locations on the sensor. In other words, based on the angle and the location of incidence, light rays are redirected by the imaging optics on to a specific path. Thus it can extract and isolate optical signals originating from different spatial locations that get mixed while propagating through the indoor space. This helps to decorrelate signals received from spatially distinct transmitters and help significantly improve communication performance. Similarly, the ambient radiant flux incident at the aperture of the receiver is distributed among all pixels of the sensor. This helps to significantly reduce shot noise per pixel \cite{dja00a}. The receiver uses all received streams to jointly decode and recover information. 
-\begin{figure}[t]
+\begin{figure}[!t]
 	\centering
-		\includegraphics[trim={0.5in 0.25in 0.5in 0.25in}, clip=false, width=2.8in]{figMIMOmodel2.png}
+		\includegraphics[trim={0.5in 0.25in 0.5in 0.25in}, clip=false, width=3.2in]{figMIMOmodel2.png}
 	\caption{Optical MIMO system with imaging receiver}
 	\label{figMIMOblock}
 \end{figure}
-\begin{figure}[b]
+
+\figurename{ \ref{figImagingReceiver}} illustrates a schematic of an imaging receiver. An imaging receiver for OWC can be modeled as a sensor and imaging optics. The sensor is located at a distance $f$ away from the optical center of the lens and is comprised of a grid of detector elements - each referred to as a `pixel'. Each pixel is comprised of a filter and optical detector. The imaging optics redirect light rays originating from different of an irradiating planar surface such that they are incident on corresponding different locations on the sensor. In other words, based on the angle and the location of incidence, light rays are redirected by the imaging optics on to a specific path. Thus it can extract and isolate optical signals originating from different spatial locations that get mixed while propagating through the indoor space. This helps to decorrelate signals received from spatially distinct transmitters and help significantly improve communication performance. Similarly, the ambient radiant flux incident at the aperture of the receiver is distributed among all pixels of the sensor. This helps to significantly reduce shot noise per pixel \cite{dja00a}. The receiver uses all received streams to jointly decode and recover information. 
+
+\begin{figure}[!t]
 	\centering
 		\includegraphics[width=3in]{figImagingReceiver.png}
 	\caption{Schematic of an imaging receiver}

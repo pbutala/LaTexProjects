@@ -20,7 +20,7 @@
 \usepackage{lscape,afterpage}
 \usepackage{xspace}
 \usepackage{epstopdf} 
-\usepackage{subfig}
+%\usepackage{subfig}
 \usepackage{color}
 \usepackage{longtable}
 \usepackage{multirow}
@@ -31,6 +31,7 @@
 \usepackage{pdflscape}
 \usepackage{afterpage}
 \usepackage{threeparttable}
+\usepackage{enumitem}
 %==========================================================================%
 %%% graphicx and pdf creation
 \usepackage{appendix}
@@ -98,5 +99,11 @@
 \right]
 }
 
+\newcommand{\cvtitle}[1]{{\LARGE {\textbf{#1}}}}
+\newcommand{\cvname}[1]{{\Large {\textbf{#1}}}}
+\newcommand{\cvheadi}[1]{{\large{\uppercase{\textbf{#1}}}}}
+\newcommand{\cvheadii}[1]{{\textbf{#1}}}
+\newcommand{\cvheadiii}[1]{{\textit{#1}}}
+\newcommand{\cvdate}[1]{{#1}}
 %\allowdisplaybreaks
 %==========================================================================%

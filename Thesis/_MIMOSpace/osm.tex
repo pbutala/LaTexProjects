@@ -3,7 +3,7 @@
 
 \graphicspath{{_MIMOSpace/figures_osm/}}
 
-\subsection{Spatial modulation and spatial multiplexing}
+\subsection{SM and SMP system outline}
 \label{subsec:osmSystem}
 
 \begin{figure}[t]
@@ -21,7 +21,7 @@
 				\caption{}
 				\label{figSMP}
 		\end{subfigure}
-\caption{Illustration of (a) SM operation with $N_{\text{tx}} = 4$ and $M = 4$. (b) SMP operation with $N_{\text{tx}} = 4$ and $M = 2$.}
+\caption[SM and SMP implementation block diagram]{SM and SMP implementation block diagram for 4 bits/symbol (a) SM implementation with $N_{\text{tx}} = 4$ and $M = 4$ (b) SMP implementation with $N_{\text{tx}} = 4$ and $M = 2$}
 	\label{fig:SpatialModulation}
 \end{figure}
 
@@ -58,7 +58,7 @@ where $P_{\text{avg}}^{\text{tx}}$ is the average radiant flux emitted by a tran
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% RESULTS %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Performance with imaging receiver}
+\subsection{SM and SMP system performance}
 \label{subsec:osmAnalysis}
 % DELETED ON 11 MARCH 2015
 %An example system is considered which has 4 transmitters arranged on a regular grid with pitch $P_{\text{tx}}$. Each transmitter has side length $\alpha_{\text{tx}}^{min}$ and diagonal $\alpha_{\text{tx}}^{max}$. The imaging receiver optics has focal length $f$. Sensor is made of large enough contiguous PD array such that all the 4 transmitter images (spots) fall on the sensor for all the different analysis configurations. Each PD is assumed to have a square shape with side length $\alpha_{\text{px}}^{min}$ and diagonal $\alpha_{\text{px}}^{max}$. The receiver surface is assumed parallel to the transmitter plane. Receiver at a distance $d$ from the transmitter plane sees a magnification $M=f/(d-f)$. If $d>>f$, which is true is most practical scenarios, $M\approx f/d$. 
@@ -89,7 +89,7 @@ Performance gains of using an imaging receiver over a non--imaging receiver are 
 		\label{figCompare8B}
 		\end{subfigure}
 	
-	\caption{Performance comparison of SM and SMP using non--imaging (NImR) and imaging (ImR) receiver}
+	\caption[SM and SMP performance comparison]{Performance comparison of SM and SMP using non--imaging (NImR) and imaging (ImR) receiver}
 	\label{figCompare}
 \end{figure}
 \clearpage% Flush page
@@ -139,7 +139,7 @@ BER vs SNR curves for SM and SMP using non--imaging receiver and imaging receive
 \end{figure}
 
 \afterpage{%
-	\clearpage
+	%\clearpage
 \begin{figure}
 	\centering
 		\begin{subfigure}{\textwidth}
@@ -159,7 +159,7 @@ BER vs SNR curves for SM and SMP using non--imaging receiver and imaging receive
 		\caption{BER vs SNR for different $\alpha_{s}$}
 		\label{figASBvS}
 \end{figure}
-	\clearpage% Flush page
+	%\clearpage% Flush page
 }
 
 For this analysis, $\alpha_{s}$ is varied while keeping $\delta_{s}$ and $\mu_{s}$ fixed. As illustrated in \figurename{ \ref{figASSpots}}, $\alpha_{s}$ affects only the spot size. As $\alpha_{s}$ increases, spots on the sensor overlap increasingly more number of pixels degrading the BER performance. Increasing the number or pixels per spot also increases the noise for each link thus causing the drop in performance. Very small pixel sizes or very large transmitter sizes also cause increase in $\alpha_{s}$. A smaller pixel size does enable the system to pack more channels provided $\alpha_{s}$ is relatively small. On the other hand, having very small pixel sizes or alternately large transmitter illumination surface tend to increase $\alpha_{s}$ and force the system to operate in a suboptimal configuration.
@@ -205,11 +205,9 @@ BER vs SNR curves for SM and SMP for different values of $\alpha_{s}$ are shown 
 		\label{figESSpots}
 \end{figure}
 
-For this analysis, $\eta_{s}$ (alternately $\delta_{s}$) is varied while keeping $\alpha_{s}$ and $\mu_{s}$ fixed. Thus only the effect of change in spot pitch affects the BER performance. As illustrated in \figurename{ \ref{figESSpots}}, as $\eta_{s}$ increases, distance between the spots on the sensor increases as they push further apart.
-
 \afterpage{%
 	%\clearpage
-	\begin{figure}
+	\begin{figure}[!t]
 		\centering
 			\begin{subfigure}{\textwidth}
 				\centering
@@ -228,8 +226,11 @@ For this analysis, $\eta_{s}$ (alternately $\delta_{s}$) is varied while keeping
 			\caption{BER vs SNR for different $\eta_{s}$.}
 			\label{figESBvS}
 	\end{figure}
-	%\clearpage% Flush page
+	\clearpage% Flush page
 }
+
+For this analysis, $\eta_{s}$ (alternately $\delta_{s}$) is varied while keeping $\alpha_{s}$ and $\mu_{s}$ fixed. Thus only the effect of change in spot pitch affects the BER performance. As illustrated in \figurename{ \ref{figESSpots}}, as $\eta_{s}$ increases, distance between the spots on the sensor increases as they push further apart.
+
 BER vs SNR curves for SM and SMP for different values of $\eta_{s}$ are shown in \figurename{ \ref{figESBvS}}. To achieve BER $\leq 10^{-3}$ at 4 bits/sym, SNRs of about [167, 174, 172, 170] dB and [175, 182, 180, 178] dB are needed for $\eta_{s}$ = [0, 0.71, 1, 1.41] with SM and SMP respectively. To achieve BER $\leq 10^{-3}$ at 8 bits/sym, SNRs of about [189, 196, 194, 192] dB and [180, 187, 185, 183] dB are needed for $\eta_{s}$ = [0, 0.71, 1, 1.41] with SM and SMP respectively. We see that the BER performance is best when the spot overlaps minimum number of pixels and worst when the spot is centered at a corner of a pixel thus maximizing the number of pixels it overlaps with. In this setup, for BER $=10^{-3}$, there is an SNR penalty of about 7 dB between the best and worst cases. The slight drop in performance for $\eta_{s}=1.4$ as compared to $\eta_{s}=0$ can be attributed to drop in free-space gain caused by the larger distance per link longer as a result of increased transmitter pitch.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -237,6 +238,12 @@ BER vs SNR curves for SM and SMP for different values of $\eta_{s}$ are shown in
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Varying $\mu_{s}$}
 \label{subsubsec:osmResultsMu}
+In this analysis, $\mu_{s}$ is varied by varying $f$. Alternately, it can be varied by changing $||\vm{d}^{z}_{j}||$. Varying $\mu_{s}$ affects both $\alpha_{s}$ and $\eta_{s}$ simultaneously. This captures their combined impact on the BER performance. We see from \figurename{ \ref{figMSSpots}} that increasing $\mu_{s}$ not only increases the spot size but also pushes the spots away from each other. Note unlike in previous case, the transmitter pitch remains constant ($P_{\text{tx}}>0$).
+
+BER vs SNR curves for SM and SMP for different values of $\mu_{s}$ are shown in \figurename{ \ref{figMSBvS}}. To achieve BER $=10^{-3}$ at 4 bits/sym, SNRs of about [167, 173, 169, 173] dB and [175, 181, 177, 181]dB are needed for $\mu_{s}$ = [0.5, 1, 1.41, 2] with SM and SMP respectively. To achieve BER $=10^{-3}$ at 8 bits/sym, SNRs of about [189, 195, 191, 195] dB and [180, 186, 182, 186] dB are needed for $\mu_{s}$ = [0.5, 1, 1.41, 2] with SM and SMP respectively.
+
+The best performance is obtained for $\mu_{s}\leq 0.5$. This is because at this value of $\mu_{s}$, $\alpha_{s}<1$ and $\eta_{s}$ is such that all spots lie on different adjacent pixels. It can also be inferred that given enough transmitters in the room, at $\mu=0.5$, every single pixel could get signal from a single transmitter thus greatly improving the capacity of the channel. If the luminaires transmit with different power levels or if the channels gains are significantly different, capacity maximizing $\mu_{s}$ is an optimization problem to be solved.
+
 \begin{figure}[!t]
 	\centering
 		\begin{subfigure}{0.49\textwidth}
@@ -270,9 +277,11 @@ BER vs SNR curves for SM and SMP for different values of $\eta_{s}$ are shown in
 		\label{figMSSpots}
 \end{figure}
 
-\afterpage{%
+At lower bit rates, SM benefits from having higher transmit power per symbol at lower $M$-PAM level. To achieve higher bit-rates, higher $M$-PAM levels push the constellations closer to each other thus quickly degrading the SM performance as compared to SMP. As shown in \figurename{ \ref{figASBvS}}, \figurename{ \ref{figESBvS}} and \figurename{ \ref{figMSBvS}}, to achieve BER $=10^{-3}$, at 4 bits/sym, SM performs 8-10 dB better while at 8 bits/sym, SMP performs 8-10 dB better.
+
+%\afterpage{%
 	%\clearpage
-	\begin{figure}
+	\begin{figure}[!t]
 		\centering
 			\begin{subfigure}{\textwidth}
 				\centering
@@ -291,17 +300,8 @@ BER vs SNR curves for SM and SMP for different values of $\eta_{s}$ are shown in
 			\caption{BER vs SNR for different $\mu_{s}$}
 			\label{figMSBvS}
 	\end{figure}
-	%\clearpage% Flush page
-}
-
-In this analysis, $\mu_{s}$ is varied by varying $f$. Alternately, it can be varied by changing $||\vm{d}^{z}_{j}||$. Varying $\mu_{s}$ affects both $\alpha_{s}$ and $\eta_{s}$ simultaneously. This captures their combined impact on the BER performance. We see from \figurename{ \ref{figMSSpots}} that increasing $\mu_{s}$ not only increases the spot size but also pushes the spots away from each other. Note unlike in previous case, the transmitter pitch remains constant ($P_{\text{tx}}>0$).
-
-BER vs SNR curves for SM and SMP for different values of $\mu_{s}$ are shown in \figurename{ \ref{figMSBvS}}. To achieve BER $=10^{-3}$ at 4 bits/sym, SNRs of about [167, 173, 169, 173] dB and [175, 181, 177, 181]dB are needed for $\mu_{s}$ = [0.5, 1, 1.41, 2] with SM and SMP respectively. To achieve BER $=10^{-3}$ at 8 bits/sym, SNRs of about [189, 195, 191, 195] dB and [180, 186, 182, 186] dB are needed for $\mu_{s}$ = [0.5, 1, 1.41, 2] with SM and SMP respectively.
-
-The best performance is obtained for $\mu_{s}\leq 0.5$. This is because at this value of $\mu_{s}$, $\alpha_{s}<1$ and $\eta_{s}$ is such that all spots lie on different adjacent pixels. It can also be inferred that given enough transmitters in the room, at $\mu=0.5$, every single pixel could get signal from a single transmitter thus greatly improving the capacity of the channel. If the luminaires transmit with different power levels or if the channels gains are significantly different, capacity maximizing $\mu_{s}$ is an optimization problem to be solved.
-
-At lower bit rates, SM benefits from having higher transmit power per symbol at lower $M$-PAM level. To achieve higher bit-rates, higher $M$-PAM levels push the constellations closer to each other thus quickly degrading the SM performance as compared to SMP. As shown in \figurename{ \ref{figASBvS}}, \figurename{ \ref{figESBvS}} and \figurename{ \ref{figMSBvS}}, to achieve BER $=10^{-3}$, at 4 bits/sym, SM performs 8-10 dB better while at 8 bits/sym, SMP performs 8-10 dB better.
-
+	\clearpage% Flush page
+%}
 
 %\begin{figure}
 	%\centering

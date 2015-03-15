@@ -1,4 +1,4 @@
-\section{The Optical Downlink}
+\section{The optical downlink}
 \label{sec:outline}
 \graphicspath{{_Intro/Figures/}}
 
@@ -9,7 +9,7 @@ This sub--section outlines optical terminology used in the rest of the text.
 \label{subsubsec:radiantFlux}
 Radiant flux is the amount of radiant energy emitted per unit time by an optical source. Let $P(\lambda)$ be the SPD under consideration. The radiant flux $\Phi_{W}$ corresponding to the SPD is given by 
 \begin{equation}
-	\Phi_{W} = \int\limits_{\lambda_{min}}^{\lambda_{max}}P(\lambda)d\lambda
+	\Phi_{\text{W}} = \int\limits_{\lambda_{\text{min}}}^{\lambda_{\text{max}}}P(\lambda)d\lambda
 	\label{eqRadiantFlux}
 \end{equation}
 (Units: W).
@@ -26,7 +26,7 @@ Irradiance is the amount of radiant flux received by a surface/device per unit a
 \label{subsubsec:luminousFlux}
 Luminous flux is the amount of luminous energy emitted per unit time by an optical source. Let $P(\lambda)$ be the SPD under consideration. The luminous flux $\Phi_{lm}$ corresponding to the SPD is given by \cite{gru08b}
 \begin{equation}
-	\Phi_{lm} = 683\int\limits_{380\text{ nm}}^{780\text{ nm}}P(\lambda)V(\lambda)d\lambda
+	\Phi_{\text{lm}} = 683\int\limits_{380\text{ nm}}^{780\text{ nm}}P(\lambda)V(\lambda)d\lambda
 	\label{eqLuminousFlux}
 \end{equation}
 where $V(\lambda)$ is the eye sensitivity function. (Units: lm).
@@ -39,11 +39,10 @@ Luminous intensity is the amount of luminous flux emitted per unit solid angle b
 \label{subsubsec:illuminance}
 Illuminance is the amount of luminous flux received by a surface/device per unit area. (Units: lm/m$^{2}$)
 
-
-\subsection{The optical downlink}
+\subsection{The optical signal chain}
 \label{subsec:outlineDownlink}
 
-The OWC system operates under the hybrid wireless model paradigm using the visible light communication (VLC) channel as the high capacity downlink and another medium for the uplink. This seems to be the accepted model and a reasonable assumption \cite{rah15a}. \figurename{ \ref{fig:VLCdownBD}} illustrates a block diagram for a typical VLC downlink. 
+A practical OWC system operates under the hybrid wireless model paradigm using the visible light communication (VLC) channel as the high capacity downlink and another medium for the uplink. This seems to be the accepted model and a reasonable assumption \cite{rah15a}. \figurename{ \ref{fig:VLCdownBD}} illustrates a block diagram for a typical downlink using the optical spectrum.
 
 \subsubsection{Data source}
 \label{subsubsec:outlineSource}
