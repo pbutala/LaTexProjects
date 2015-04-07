@@ -2,9 +2,11 @@
 \label{sec:svdvlc}
 \graphicspath{{_System/figures_svdvlc/}}
 
+MIMO VLC systems exploit the high SNR of a SISO channel offered due to typical illumination requirements to overcome the capacity constraints due to limited modulation bandwidth of LEDs. In this section, a singular value decomposition VLC (SVD-VLC)\footnote{This work is published in peer--reviewed IEEE conference proceeding \cite{but13a}.} MIMO system is outlined to integrate illumination commands with spatial MIMO OWC. This system can achieve high data rates while maintaining the target illumination and allowing the channel matrix to vary in order to support mobility in a practical indoor VLC deployment. The upper bound on spectral efficiency of the proposed SVD-VLC MIMO system is calculated assuming an imaging receiver. The relationship between the proposed system performance and system parameters such as power constraints, lens aperture and random receiver locations are described.
+
 \subsection{Native SVD system}
 \label{subsec:svdvlcNative}
-In RF MIMO wireless communication systems where the channel state information (CSI) is known at the transmitter, singular value decomposition (SVD) techniques apply coordinate system transformations to extract parallel independent links and maximize the capacity of the channel. The channel matrix $\bf{H}$ can be decomposed into rotation and scaling matrices using SVD as 
+In RF MIMO wireless communication systems where the channel state information (CSI) is known at the transmitter, SVD techniques apply coordinate system transformations to extract parallel independent links and maximize the capacity of the channel. The channel matrix $\bf{H}$ can be decomposed into rotation and scaling matrices using SVD as 
 \begin{equation}
 	\label{eqHsvd}
 	\bf{H} = \bf{U}\bf{\Lambda}\bf{V}^{*}
@@ -30,16 +32,16 @@ Inserting the above definations in MIMO channel model and then pre-multiplying b
 \end{figure}
 %\footnotetext{Adapted from \cite{tse05a}, pg 292-293}
 
-\figurename{ {\ref{fig:SVD}}} illustrates the transformed MIMO channel. $\bf{X}^{'}$ are the inputs for the data streams in the coordinate system defined by columns of $\bf{V}$ and $\bf{Y}^{'}$ are the outputs in the coordinate system defined by columns of $\bf{U}$. Since $\bf{U}$ is a unitary martix, elements of $\bf{W}^{'}$ will be IID and have the same variance $\sigma_{n}^{2}$ as $\bf{W}$ \cite{tse05a}. Since $\bf{\Lambda}$ is a diagonal matrix, extracting the simultaneous equations from Eq. \eqref{eqSVDChannel} gives $\Gamma$ simultaneous independent link models described by
+\figurename{ {\ref{fig:SVD}}} illustrates the transformed MIMO channel. $\bf{X}^{'}$ are the inputs for the data streams in the coordinate system defined by columns of $\bf{V}$ and $\bf{Y}^{'}$ are the outputs in the coordinate system defined by columns of $\bf{U}$. Since $\bf{U}$ is a unitary martix, elements of $\bf{W}^{'}$ will be independent and identically distributed (IID) and have the same variance $\sigma_{\text{n}}^{2}$ as $\bf{W}$ \cite{tse05a}. Since $\bf{\Lambda}$ is a diagonal matrix, extracting the simultaneous equations from Eq. \eqref{eqSVDChannel} gives $\Gamma$ simultaneous independent link models described by
 \begin{equation}
 	\label{eqSVDChannel2}
 	y^{'}_{k} = \lambda_{k}x^{'}_{k} + w^{'}_{k}; 1\leq{k}\leq\Gamma
 \end{equation}
 
-In RF MIMO systems, the aggregate transmit power is the binding constraint. The waterfilling algorithm \cite{gol97a} provides a solution for allocate powers to the independent streams in order to maximize the channel capacity. As a result of this optimization, links with SNR greater than a threshold, are allocated power budget corresponding to their SNRs, while those with SNR below the threshold do not transmit any information. Let ${K^{'}_{k}}$ be these waterfilling power allocations. Then the upper bound on the capacity of the RF MIMO channel can be computed using Shannon's formulation \cite{sha48a} and is given by
+In RF MIMO systems, the aggregate transmit power is the binding constraint. The waterfilling algorithm \cite{gol97a} provides a solution for allocate powers to the independent streams in order to maximize the channel capacity. As a result of this optimization, links with SNR greater than a threshold, are allocated power budget corresponding to their SNRs, while those with SNR below the threshold do not transmit any information. Let ${K^{'}_{k}}$ be these waterfilling power allocations. Then the capacity of the RF MIMO channel can be computed using Shannon's formulation \cite{sha48a} and is given by
 \begin{equation}
 	\label{eqSVDCap}
-	C_{\text{RF}} = \sum_{k=1}^{\Gamma}\text{log}^{ }_{2}\left(1 + \frac{\lambda_{k}^{2} {K}^{'}_{k}}{\sigma_{n}^{2}}\right)
+	C_{\text{RF}} = \sum_{k=1}^{\Gamma}\text{log}^{ }_{2}\left(1 + \frac{\lambda_{k}^{2} {K}^{'}_{k}}{\sigma_{\text{n}}^{2}}\right)
 \end{equation}
 %In a practical indoor OWC system where the CSI is known at the transmitters, SVD technique can be used to separate illumination signals from communications signals. 
 %For a VLC system, the average radiant flux emitted by individual luminaires needs to be maintained to achieve the requested illumination state. These issues are resolved in the SVD-VLC system tackled in the next section.
@@ -53,12 +55,12 @@ In the native SVD model, information streams are defined over inputs $x^{'}_{k}$
 
 An SVD architecture with different power and offset allocation has been proposed for MIMO VLC communications in \cite{par11a}. In this work, the aggregate sum of average radiated optical flux from multiple LEDs is constrained to be smaller than or equal to an upper bound in order to fulfill the eye safety requirements. Under this condition, it is still possible for the system to inadvertently violate the eye safety limit if the channel matrix is not full rank despite satisfying the stated constraints. Alternately, the system will under-utilize the capacity of the channel. Also, the illumination generated by that system changes with the channel matrix thus transitioning to a different illumination state every time the channel matrix is changed. Finally, the solution restricts itself to $M$-PAM and necessitates different optimization for different modulation schemes.
 
-Native SVD does not impose any form of non-negativity or illumination constraint. The SVD-VLC architecture is derived from the native SVD architecture to optimally utilize the capacity of the channel while satisfying illumination constraints. For indoor VLC system to provide illumination and optical wireless access simultaneously, the channel constraints are given by
+Native SVD does not impose any form of non-negativity or illumination constraint. The SVD-VLC architecture is derived from the native SVD architecture to perform OWC while satisfying illumination constraints. For indoor VLC system to provide illumination and optical wireless access simultaneously, the channel constraints are given by
 
 \subsubsection{Non-negativity constraint}
 \label{subsubsec:svdvlcSystemNonnegative}
 
-For indoor VLC system, information is carried over an intensity signal which cannot be negative. Eq. \eqref{eqConsNN} implies that input symbols should be defined to generate positive values after preprocessing.
+For indoor VLC system, information is carried over an intensity signal which cannot be negative. Eq. \eqref{eqConsNN} implies that input symbols should be defined to generate positive values after pre-processing.
 \begin{equation}
 	\label{eqConsNN}
 	{\bf{X}} \geq {\bf{0}} \leftrightarrow {\bf{V}}{\bf{X}}^{'} \geq {\bf{0}}\\
@@ -97,7 +99,7 @@ M[.] is element by element magnitude operator. The above constraint states that 
 
 \figurename{ \ref{fig:SVDVLCblock}} illustrates SVD-VLC system architecture. The system controller accepts information to be transmitted, illumination state and the estimated channel state for each user as inputs. During an active link, the information to transmit is relayed via an edge router. The illumination state requests can originate from indoor occupants or a `smart' illumination controller. For most applications in indoor spaces, the user is either static of mobile at a slow pace and thus a reasonably long coherence time can be assumed. In such a scenario, the channel state can be periodically estimated at the receiver from pilot signals and the state information can be transferred back to the system controller with a small overhead.
 
-The system controller generates the different `optical' streams to transmit. The `I1-streams' are the $N_{\text{tx}}-\Gamma$ links that service only illumination. The `I2-streams' are the $\Gamma$ information $+$ illumination bearing links. The I1 and I2 streams are preprocessed by ${\bf{V}}$ to transform and multiplex them over the channel. This multiplexing generates and maintains the desired illumination state in the indoor space. At the receiver, the imaging optics separate the different optical streams. The TIAs for each pixel add i.i.d white gaussian noise to each link. Post--processing by ${\bf{U^{*}}}$ demultiplexes the parallel links and recovers the $\Gamma$ I2 streams. The streams can be jointly decoded to optimally recover the transmitted information. Thus the SVD-VLC architecture services the illumination while achieving high data rates over the VLC channel. 
+The system controller generates the different `optical' streams to transmit. The `I1-streams' are the $N_{\text{tx}}-\Gamma$ links that service only illumination. The `I2-streams' are the $\Gamma$ information $+$ illumination bearing links. The I1 and I2 streams are pre-processed by ${\bf{V}}$ to transform and multiplex them over the channel. This multiplexing generates and maintains the desired illumination state in the indoor space. At the receiver, the imaging optics separate the different optical streams. The TIAs for each pixel add white Gaussian noise to each link. Post--processing by ${\bf{U^{*}}}$ demultiplexes the parallel links and recovers the $\Gamma$ I2 streams. The streams can be jointly decoded to optimally recover the transmitted information. Thus the SVD-VLC architecture services the illumination while achieving high data rates over the VLC channel. 
 
 %Thus the SVD-VLC architecture maximizes the achievable data rates over the VLC channel while servicing the illumination mission. The lower bound on capacity of the MIMO VLC channel with imaging receiver can now be derived from Eqs. \ref{eqMimoSNR}, \ref{eqMimoCap} and \ref{eqSVDChannel2} as
 %
@@ -108,7 +110,7 @@ The system controller generates the different `optical' streams to transmit. The
 
 \subsubsection{SVD-VLC spectral efficiency}
 \label{subsubsec:svdvlcSpectralEfficiency}
-The above signaling constraints reduce the maximum achievable spectral efficiency of the the optical channel when compared to an RF channel with AWGN at same total signal power and noise. The exact efficiency formulation for an indoor OWC channel with the above constraints does not yield a closed--form expression. However, it is instructive to treat the capacity formulation of Eq. \eqref{eqSVDCap} strictly as an upper bound to gain an insight into upper bounded performance gains.
+The above signaling constraints reduce the maximum achievable spectral efficiency of the the optical channel when compared to an RF channel with AWGN at same total signal power and noise. The exact efficiency formulation for an indoor OWC channel with the above constraints can be obtained by information theoretic methods. However, it is instructive to treat the capacity formulation of Eq. \eqref{eqSVDCap} strictly as an upper bound to gain an insight into upper bounded performance gains.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%             RESULTS            %%%%%%%%%%%%%%%%
@@ -194,13 +196,13 @@ The upper bound on spectral efficiency of the optical MIMO channel with imaging 
 \begin{figure}[!t]
 	\centering
 		\includegraphics[width=3.5in]{fig_SpotsAtLnkDist.png}
-	\caption[Spots on sensor at different link distances]{Spots (magnified for better illustration) as projected on the imaging receiver sensor plane at different link distances which are (a) top left: 1.0m (b) top right: 1.2m (c) bottom left: 2.0m (d) bottom right: 2.2m}
+	\caption[Spots on sensor at different link distances]{Spots (magnified for better illustration) as projected on the imaging receiver sensor plane at different link distances which are (a) top left: 1.0 m (b) top right: 1.2 m (c) bottom left: 2.0 m (d) bottom right: 2.2 m}
 	\label{figSpotsVsLink}
 \end{figure}
 
 \figurename{ \ref{figCapVsLkD}} shows spectral efficiencies calculated at different link distances when the average signal power is 5 W. The link distance here is defined as the length of a vector from origin of the receiver coordinate system along {$\bf{\hat{z}}$} when it intersects the transmitter plane. The SISO channel spectral efficiency monotonically decreases with increasing link distance. The spectral efficiency of the MIMO channel goes through regions of positive (increasing) and negative (decreasing) slopes. 
 
-As seen in \figurename{ \ref{figSpotsVsLink}}a, at the 1 m link distance, only 1 transmitter is in the receiver's FOV while adjascent transmitters are just outside the FOV. Increasing the link distance to 1.2 m causes the adjascent transmitters to enter the receiver FOV, increasing the number of parallel channels as seen in \figurename{\ref{figSpotsVsLink}}b. The corresponding increase in spectral efficiency is greater than the small decrease caused by the increasing link distance. Thus the MIMO channel spectral efficiency curve has a positive slope upto 1.2 m. Between 1.2 m  to 1.8 m, number of transmitters seen by receiver remain the same as the link distance is further increased. This causes the spectral efficiency of each individual link to decrease thus causing an overall decrease in the channel spectral efficiency from 1.2 m to 1.8 m. \figurename{ \ref{figSpotsVsLink}}c shows the transmitters projected on the receiver at a link distance of 2.0 m where one can see more adjacent transmitters begin to enter the receiver FOV and at 2.2 m as in \figurename{ \ref{figSpotsVsLink}}d, the transmitters are completely in the receiver FOV thus causing an increase in spectral efficiency due to more parallel channels. From 2.2 m to 2.8 m, no more transmitters enter the receiver FOV and thus the overall spectral efficiency decreases with increasing link distance. 
+As seen in \figurename{ \ref{figSpotsVsLink}}a, at the 1 m link distance, only 1 transmitter is in the receiver's FOV while adjascent transmitters are just outside the FOV. Increasing the link distance to 1.2 m causes the adjascent transmitters to enter the receiver FOV, increasing the number of parallel channels as seen in \figurename{ \ref{figSpotsVsLink}}b. The corresponding increase in spectral efficiency is greater than the small decrease caused by the increasing link distance. Thus the MIMO channel spectral efficiency curve has a positive slope upto 1.2 m. Between 1.2 m  to 1.8 m, number of transmitters seen by receiver remain the same as the link distance is further increased. This causes the spectral efficiency of each individual link to decrease thus causing an overall decrease in the channel spectral efficiency from 1.2 m to 1.8 m. \figurename{ \ref{figSpotsVsLink}}c shows the transmitters projected on the receiver at a link distance of 2.0 m where one can see more adjacent transmitters begin to enter the receiver FOV and at 2.2 m as in \figurename{ \ref{figSpotsVsLink}}d, the transmitters are completely in the receiver FOV thus causing an increase in spectral efficiency due to more parallel channels. From 2.2 m to 2.8 m, no more transmitters enter the receiver FOV and thus the overall spectral efficiency decreases with increasing link distance. 
 
 \begin{table}[!t] %top [!b] bottom
 \caption{SVD-VLC simulation illumination constraints}
@@ -246,10 +248,10 @@ To  illustrate generation and maintenance of an illumination state using the SVD
 \begin{figure}[!t]
 	\centering
 		\includegraphics[width=5.5in]{fig_SVDVLC_Ill_full.png}
-	\caption[Generation and maintenance of illumination state by SVD-VLC]{Generation and maintenance of illumination state by SVD-VLC. 'X' marks the setpoint location in the illumination plane at 1m height. Scenarios: (a) Top left (b) Bottom left (c) Right }
+	\caption[Generation and maintenance of illumination state by SVD-VLC]{Generation and maintenance of illumination state by SVD-VLC. 'X' marks the setpoint location in the illumination plane at 1 m height. Scenarios: (a) Top left (b) Bottom left (c) Right }
 	\label{figIllSVD}
 \end{figure}
 
 Receiver locations at four different time instants are chosen pseudo--randomly to simulate a varying channel matrix due to mobility. For each of the three scenarios, a 1024 length long data sequence was generated from a uniform distributed pseudo--random number sequence in the (0, 1) range. The data sequence was scaled to meet the average signal constraint specified by ${\bf{P}}^{'}$ and I1 and I2 streams were generated. After multiplexing these streams over the p-channel, the resulting illumination state was calculated as illustrated in \figurename{ \ref{figIllSVD}}. Table \ref{tblSimulation2} shows values for the illumination achieved at the setpoint location as the channel matrix varies with the receiver's location. It can be seen that despite the variations in the channel matrix, the illumination state remains nearly constant.
 
-
+In this section, a novel SVD-VLC architecture is introduced to implement MIMO VLC channel with an imaging receiver while maintaining illumination. It is shown that for the same received radiant flux, MIMO channel with imaging receiver offers large spectral efficiency gains over the equivalent SISO channel. Additionally, the concept of using I1 and I2 streams to transmit information without affecting illumination is introduced. It is also shown that the system can achieve and maintain a user defined illumination state under changing channel conditions. SVD-VLC system does require the CSI to be known at the transmitter and receiver. While it may be possible in a pseudo-static indoor scenario to acquire this information with minimal resource overhead, it does add complexity to the system.

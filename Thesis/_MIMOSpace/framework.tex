@@ -1,50 +1,50 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% OSM IMG %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Imaging receiver normalization framework}
-\label{subsec:mimoImagingFramework}
+\section{Imaging receiver normalization framework}
+\label{sec:mimoImagingFramework}
 \graphicspath{{_MIMOSpace/figures_osm/}}
 
 It is desired to analyze the effect of imaging receiver configuration on performance of optical MIMO modulation techniques. The system performance is dependent on how the transmitter images or `spots' land on the sensor. Different system configurations can generate similar spot profiles on the sensor and thus similar communication  performance. To analyze the OWC system performance independent of a specific system configuration, the following normalization parameters are defined.
 
 \subsubsection{Normalized luminaire side length}
 \label{subsubsec:frameworkSide}
-The normalized luminaire side length $\alpha_{s}$ is defined as the ratio of the length of the longest segment across a spot to side length of a pixel. 
+The normalized luminaire side length $\alpha_{\text{s}}$ is defined as the ratio of the length of the longest segment across a spot to side length of a pixel. 
 \begin{equation}
 	\label{eqAlphaS}
-	\alpha_{s} \triangleq \frac{M_{\text{im}} a_{\text{tx}}^{\text{max}}}{\alpha_{\text{px}}^{\text{min}}}
+	\alpha_{\text{s}} \triangleq \frac{M_{\text{im}} a_{\text{tx}}^{\text{max}}}{\alpha_{\text{px}}^{\text{min}}}
 \end{equation}
-where $a_{\text{tx}}^{\text{max}}$ is the length of longest segment across irradiating surface of the luminaire. $\alpha_{s}$ specifies the spot size relative to the sensor dimensions. For example, consider two similar systems which differ in only the luminaire diagonal and PD side lengths. If both parameters differ in scale by the same factor, $\alpha_{s}$ would remain the same for both systems. $\alpha_{s}\leq 1$ implies the spot size is at most as large as the size of a PD. If the centroid of the spot is aligned with the centroid of a PD, the spot will lie completely inside the PD.
+where $a_{\text{tx}}^{\text{max}}$ is the length of longest segment across irradiating surface of the luminaire. $\alpha_{\text{s}}$ specifies the spot size relative to the sensor dimensions. For example, consider two similar systems which differ in only the luminaire diagonal and PD side lengths. If both parameters differ in scale by the same factor, $\alpha_{\text{s}}$ would remain the same for both systems. $\alpha_{\text{s}}\leq 1$ implies the spot size is at most as large as the size of a PD. If the centroid of the spot is aligned with the centroid of a PD, the spot will lie completely inside the PD.
  
 \subsubsection{Normalized luminaire pitch}
 \label{subsubsec:frameworkPitch}
-The normalized luminaire pitch $\delta_{s}$ is defined as the ratio of the spot-spot pitch to the length of the longest segment across the pixel. 
+The normalized luminaire pitch $\delta_{\text{s}}$ is defined as the ratio of the spot-spot pitch to the length of the longest segment across the pixel. 
 \begin{equation}
 	\label{eqDeltaS}
-	\delta_{s} \triangleq \frac{M_{\text{im}} P_{\text{tx}}}{\alpha_{\text{px}}^{\text{max}}}
+	\delta_{\text{s}} \triangleq \frac{M_{\text{im}} P_{\text{tx}}}{\alpha_{\text{px}}^{\text{max}}}
 \end{equation}
-where $P_{\text{tx}}$ is the luminaire-luminaire pitch. $\delta_{s}$ specifies the distance between the centroids of adjacent spots relative to the sensor dimensions. For example, consider two similar systems which differ in only the transmitter pitch and PD diagonal. If both parameters differ in scale by the same factor, $\delta_{s}$ would remain the same. $\delta_{s}>1$ ensures that centroids of adjacent spots lie on different pixels. In the limit, if both transmitters were point sources, condition $\delta_{s}>1$ would ensure that different pixels receive signals from neighboring transmitters, thus eliminating ICI.
+where $P_{\text{tx}}$ is the luminaire-luminaire pitch. $\delta_{\text{s}}$ specifies the distance between the centroids of adjacent spots relative to the sensor dimensions. For example, consider two similar systems which differ in only the transmitter pitch and PD diagonal. If both parameters differ in scale by the same factor, $\delta_{\text{s}}$ would remain the same. $\delta_{\text{s}}>1$ ensures that centroids of adjacent spots lie on different pixels. In the limit, if both transmitters were point sources, condition $\delta_{\text{s}}>1$ would ensure that different pixels receive signals from neighboring transmitters, thus eliminating ICI.
 
 \subsubsection{Normalized luminaire edge-edge distance}
 \label{subsubsec:frameworkEdge}
-The normalized luminaire edge-edge distance $\eta_{s}$ is defined as the ratio of minimum distance between the edges of adjacent spots to the length of the pixel diagonal.
+The normalized luminaire edge-edge distance $\eta_{\text{s}}$ is defined as the ratio of minimum distance between the edges of adjacent spots to the length of the pixel diagonal.
 \begin{equation}
 	\label{eqEtaS}
-	\eta_{s} \triangleq \frac{M_{\text{im}}(P_{\text{tx}}-\alpha_{\text{tx}}^{\text{max}})}{\alpha_{\text{px}}^{\text{max}}}
+	\eta_{\text{s}} \triangleq \frac{M_{\text{im}}(P_{\text{tx}}-\alpha_{\text{tx}}^{\text{max}})}{\alpha_{\text{px}}^{\text{max}}}
 \end{equation}
-$\eta_{s}$ specifies the minimum possible distance between the edges of adjacent spots relative to the sensor dimensions. For example, now consider two similar systems which differ in only the minimum possible distance between the edges of adjacent luminaires and PD diagonal. If both parameters scaled by the same factor, $\eta_{s}$ would remain the same. $\eta_{s}>1$ ensures that adjacent spots do not overlap on any pixel. $\eta_{s}$ can be expressed in terms of $\alpha_{s}$ and $\delta_{s}$ as in (\ref{eqES2}). For square pixels, $l=1/\sqrt{2}$.
+$\eta_{\text{s}}$ specifies the minimum possible distance between the edges of adjacent spots relative to the sensor dimensions. For example, now consider two similar systems which differ in only the minimum possible distance between the edges of adjacent luminaires and PD diagonal. If both parameters scaled by the same factor, $\eta_{\text{s}}$ would remain the same. $\eta_{\text{s}}>1$ ensures that adjacent spots do not overlap on any pixel. $\eta_{\text{s}}$ can be expressed in terms of $\alpha_{\text{s}}$ and $\delta_{\text{s}}$ as in (\ref{eqES2}). For square pixels, $l=1/\sqrt{2}$.
 
 \begin{align}
 	l &= \frac{\alpha_{\text{px}}^{\text{min}}}{\alpha_{\text{px}}^{\text{max}}}\label{eqESl}\\
-	\eta_{s} &= \delta_{s} - l\alpha_{s}\label{eqES2}
+	\eta_{\text{s}} &= \delta_{\text{s}} - l\alpha_{\text{s}}\label{eqES2}
 \end{align}
 
 \subsubsection{Normalized magnification}
 \label{subsubsec:frameworkMagnification}
-Let $M_0$ be the magnification of the system when $\alpha_{s}=1$. Normalized magnification is defined as the ratio of the magnification of the system to $M_0$.
+Let $M_0$ be the magnification of the system when $\alpha_{\text{s}}=1$. Normalized magnification is defined as the ratio of the magnification of the system to $M_0$.
 
 \begin{align}
 	M_{0} &\triangleq \frac{\alpha_{\text{rx}}^{\text{min}}}{\alpha_{\text{tx}}^{\text{max}}}\label{eqM0}\\
-	\mu_{s} &\triangleq \frac{M_{\text{im}}}{M_{0}}\label{eqMS}
+	\mu_{\text{s}} &\triangleq \frac{M_{\text{im}}}{M_{0}}\label{eqMS}
 \end{align}
-Consider two similar systems that differ in distance between the luminaire plane and the receiver and also in the receiver focal lengths. $\mu_{s}$ for both systems is the same value when both parameters differ in scale by the same factor.
+Consider two similar systems that differ in distance between the luminaire plane and the receiver and also in the receiver focal lengths. $\mu_{\text{s}}$ for both systems is the same value when both parameters differ in scale by the same factor.

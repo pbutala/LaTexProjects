@@ -1,8 +1,12 @@
-\section{Metameric modulation}
-\label{sec:metameric}
+\chapter[Optical color MIMO: Metameric modulation]{Metameric modulation}
+\label{chapter:metameric}
+\thispagestyle{myheadings}
+%\section{Metameric modulation}
+%\label{sec:metameric}
 \graphicspath{{_MIMOColor/figures_mm/}}
+In this chapter, we propose metameric modulation\footnote{This work is published in peer--reviewed IEEE proceeding \cite{but12a}.} - a novel modulation scheme for VLC which can maintain constant perceived ambient lighting. By using $D > 3$ LEDs, it is possible to render same illumination chromaticity with different combinations of LEDs. These different illumination SPDs are indistinguishable to humans but are distinguishable to an electronic receiver and can be achieved due to principle of metamerism. Information is encoded in changes between these states and can be recovered by detecting intensity modulation in different wavelength bands.
 
-\subsection{Human eye and color perception}
+\section{Metamerism}
 \label{subsec:metamericEye}
 \begin{figure}[!t]
 	\centering
@@ -20,7 +24,7 @@ The human eye is a sensory organ that enables humans to perceive electromagnetic
 	\centering
 %		\includegraphics[width=4in]{ConeResponse.png}
     \includegraphics[width=4in]{ConeResponse.eps}
-	\caption[Normalized absorbance of photons by rods and cones]{Normalized absorbance of photons by rods and cones. Ref. \cite{wan96a}}
+	\caption[Normalized absorbance of photons by rods and cones]{Normalized absorbance of photons by rods and cones \cite{wan96a}}
 	\label{figConeResp}
 \end{figure}
 
@@ -28,7 +32,7 @@ Grassmann's laws \cite{gra54a} of color matching develop the theory behind the p
 
 Section \ref{subsec:cskNonlinear} provides a mathematical model that incorporates visual perception and maps SPDs to a point on the chromaticity plane. Since metamerically equivalent SPDs generate the same sensation from human eye, they are mapped to the same chromaticity point on the CIE-CS. The color gamut on the CIE-CS is a polygon with chromaticity coordinate of the primary light sources as its vertices.
 
-\subsection{MM system outline}
+\section{MM system outline}
 \label{subsec:metamericMM}
 Metameric modulation (MM) is implemented by using multiple sets of primary light sources capable of providing user requested illumination color.
 \begin{figure}[!t]
@@ -95,7 +99,7 @@ I_{P}^{1}&\cdots&I_{P}^{M}
 \end{array} \right)
 \end{equation}
 
-\begin{figure}[!b]
+\begin{figure}[!t]
 	\centering
 %		\includegraphics[width=5in]{MM_time.png}
     \includegraphics[width=5in]{MM_time.eps}
@@ -125,17 +129,22 @@ The desired ambient lighting state can be specified by a point on the chromatici
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{MM system performance}
+\section{MM system performance}
 \label{subsec:metamericPerformance}
+Performance of MM is studied using color bands and color band combinations as defined in the standard and outlined in section \ref{sec:ieeestd}. Each set of LEDs generating a metameric color point can be implemented as a CBC. Block diagram for MM using CBCs is illustrated in \figurename{ \ref{figMMBD}}. For an $M$-ary MM, log$^{ }_{2}$($M$) bits from the encoded bit--stream are mapped to one out of $M$ possible CBCs. With knowledge of color set--point to generate and user requested illumination level, radiant fluxes $P_{d}; 1\leq d\leq D$ to transmit are calculated. The LED drivers then drive all LEDs to achieve desired illumination color and intensity using the CBC selected by the information to transmit. At the receivers, the incident radiant flux generates electrical signals which are used to estimate transmitted flux $\hat{P}_{d}$ over each type of LED. Using the estimated fluxes, an estimate of active set of LEDs $\hat{\text{CBC}}_{m}$ can be made to recover transmitted information.
 
-\begin{figure}[t]
+\begin{figure}[!t]
 	\centering
     \includegraphics[trim={0in 0in 0in 0in}, clip=true, width=\textwidth]{MMBlockDiagram.png}
 	\caption{MM block diagram using IEEE 802.15.7 CBCs}
 	\label{figMMBD}
 \end{figure}
 
-\afterpage{%
+
+\figurename{ \ref{figMM_BERvsSNR}} shows BER vs SNR performance for MM for $M$ = 4 and 8. For this analysis, a white chromaticity point of (1/3, 1/3) is generated with the selected CBCs. 4-MM can be implemented with $D$ = 5, 6 or 7. 8-MM is implemented with $D=7$. In absence of illumination constraint, 4-MM achieves the best performance with $D=5$ using CBs from set \{0, 1, 2, 3, 4\} for CBC set \{5, 6, 7, 8\}. Performance plots for 4-MM with $D$ = 6 and 7 are also illustrated for comparison. Implementing 8-MM with CBCs as outlined in IEEE 802.15.7 requires about 60 dB of SNR and seems impractical. However, a different set of LEDs may be used to implement 8-MM to obtain a better performance.
+
+Performance comparison of 4-MM at same illumination intensity level is illustrated in \figurename{ \ref{figMM_BERvsSNR}}. In this case, with $D=5$, 4-MM with CBs from set \{0, 1, 2, 4, 5\} for CBC set \{3, 4, 5, 6\} outperforms others.  CBC set \{5, 6, 7, 8\} has a high luminous efficacy as compared to  CBC set \{3, 4, 5, 6\} and thus is constrained in radiant flux for signaling at a set illumination level. On comparing performance of 4-MM for all possible values of $D$, CBC sets \{1, 2, 4, 5\}, \{1, 2, 4, 6\}, \{1, 2, 4, 7\} and \{1, 2, 4, 8\} with $D=6$ perform the best.
+%\afterpage{%
 %\clearpage
 \begin{figure}[H]
 	\centering
@@ -174,10 +183,10 @@ The desired ambient lighting state can be specified by a point on the chromatici
 	\caption{BER vs SNR for different combinations of CBC}
 	\label{figMM_BERvsSNR}
 \end{figure}
-\clearpage% Flush page
-}
+%\clearpage% Flush page
+%}
 
-\afterpage{%
+%\afterpage{%
 %\clearpage
 \begin{figure}[H]
 	\centering
@@ -216,11 +225,7 @@ The desired ambient lighting state can be specified by a point on the chromatici
 	\caption{BER vs LSNR for different combinations of CBC}
 	\label{figMM_BERvsLSNR}
 \end{figure}
-\clearpage% Flush page
-}
+%\clearpage% Flush page
+%}
 
-Performance of MM is studied using color bands and color band combinations as defined in the standard and outlined in section \ref{sec:ieeestd}. Each set of LEDs generating a metameric color point can be implemented as a CBC. Block diagram for MM using CBCs is illustrated in \figurename{ \ref{figMMBD}}. For an $M$-ary MM, log$^{ }_{2}$($M$) bits from the encoded bit--stream are mapped to one out of $M$ possible CBCs. With knowledge of color set--point to generate and user requested illumination level, radiant fluxes $P_{d}; 1\leq d\leq D$ to transmit are calculated. The LED drivers then drive all LEDs to achieve desired illumination color and intensity using the CBC selected by the information to transmit. At the receivers, the incident radiant flux generates electrical signals which are used to estimate transmitted flux $\hat{P}_{d}$ over each type of LED. Using the estimated fluxes, an estimate of active set of LEDs $\hat{\text{CBC}}_{m}$ can be made to recover transmitted information.
-
-\figurename{ \ref{figMM_BERvsSNR}} shows BER vs SNR performance for MM for $M$ = 4 and 8. For this analysis, a white chromaticity point of (1/3, 1/3) is generated with the selected CBCs. 4-MM can be implemented with $D$ = 5, 6 or 7. 8-MM is implemented with $D=7$. In absence of illumination constraint, 4-MM achieves the best performance with $D=5$ using CBs from set \{0, 1, 2, 3, 4\} for CBC set \{5, 6, 7, 8\}. Performance plots for 4-MM with $D$ = 6 and 7 are also illustrated for comparison. Implementing 8-MM with CBCs as outlined in IEEE 802.15.7 requires about 60 dB of SNR and seems impractical. However, a different set of LEDs may be used to implement 8-MM to obtain a better performance.
-
-Performance comparison of 4-MM at same illumination intensity level is illustrated in \figurename{ \ref{figMM_BERvsSNR}}. In this case, with $D=5$, 4-MM with CBs from set \{0, 1, 2, 4, 5\} for CBC set \{3, 4, 5, 6\} outperforms others.  CBC set \{5, 6, 7, 8\} has a high luminous efficacy as compared to  CBC set \{3, 4, 5, 6\} and thus is constrained in radiant flux for signaling at a set illumination level. On comparing performance of 4-MM for all possible values of $D$, CBC sets \{1, 2, 4, 5\}, \{1, 2, 4, 6\}, \{1, 2, 4, 7\} and \{1, 2, 4, 8\} with $D=6$ perform the best.
+In this chapter, we have proposed MM, a novel modulation scheme for achieving constant color control in optical wireless communication using luminaires. This technique attempts to provide better color rendering for illumination while achieving wireless communication function. MM offers several advantages over CSK. In MM, to generate a set point, we can easily leverage MacAdams ellipses \cite{mac49a} to generate a color at a lower energy consumption point inside each ellipse. Such a technique cannot be applied to CSK because the average then would differ significantly from the set point. Additionally MM always generates the true requested ambient lighting state. The CSK constellation points always generate significantly different colors. Thus MM inherently has the ability to greatly reduce color flicker and improve color rendering. 

@@ -2,67 +2,67 @@
 \label{sec:sisoChannel}
 \graphicspath{{_SISO/Figures/}}
 
-A SISO VLC channel can be established between a single luminaire broadcasting information over optical spectrum  and a single receiver that can generate an electrical signal proportional to incident optical radiation. Let the radiant flux emitted by the transmitter be represented by $x$. Intensity modulation imposes a non--negativity constraint ($x\geq$ 0) on the transmitted signal. The emitted radiant flux also provides illumination. Let $P_{avg}$ be the average transmitted radiant flux to maintain user requested illumination levels. Thus mean of transmitted signal must equal $P_{avg}$.
+A SISO VLC link can be established between a single luminaire broadcasting information over optical spectrum  and a single receiver that can generate an electrical signal proportional to incident optical radiation. Let the radiant flux emitted by the transmitter be represented by $x$. Intensity modulation imposes a non--negativity constraint ($x\geq$ 0) on the transmitted signal. The emitted radiant flux also provides illumination. Let $P_{\text{avg}}$ be the average transmitted radiant flux to maintain user requested illumination levels. Thus mean of transmitted signal must equal $P_{\text{avg}}$.
 
 The transmitted flux propagates through the indoor space and traverses over different paths arriving at the receiver. The received flux can be expressed as a convolution of the channel impulse response and transmitted flux waveform. Under the `luminaire as a transmitter' model, the LOS component of the received flux is dominant over the NLOS component. In addition to free space path losses, the NLOS component of the received flux undergoes additional attenuation due to non--ideal reflectivity of the walls. The delay spread for the indoor channel is small when compared to frequency of intensity modulation. Under these circumstances, the channel can be treated as a LOS channel and the channel impulse response can be represented by a single tap with gain $h$. 
 
-At the receiver, additive noise independent of the signal is added to the received signal and represented by $w$. Let the total received signal and noise be represented by $y$. The system can then be represented as in Eq. \eqref{eqSisoChannel}.
+At the receiver, additive noise independent of the signal is added to the received signal and represented by $w$. Let the total received signal and noise be represented by $y$. The SISO channel can then be modeled as in Eq. \eqref{eqSisoChannel}.
 \begin{equation}
 	\label{eqSisoChannel}
 	y = hx + w
 \end{equation}
 
-The channel gain is a function of the radiant intensity of flux emission, the free space square path loss, optical gains at receiver and receiver sensor responsivity. Let the radiant intensity emitted by the transmitter at any angle $\phi$ subtended between the transmitter surface normal and the optical axis be given by $L(\phi)$. Radiant intensity of a Lambertian transmitter of order $m$ is given by
+The channel gain is a function of the radiant intensity of emitted flux, the free space square path loss, optical gains at receiver and receiver sensor responsivity. Let the radiant intensity emitted by the transmitter at any angle $\phi$ subtended between the transmitter surface normal and the optical axis be given by $L(\phi)$. Radiant intensity of a Lambertian transmitter of order $m$ is given by
 \begin{equation}
 	\label{eqLambertian}
 	L(\phi) = \twopartdef{{\frac{(m+1)}{2\pi}}cos^{m}(\phi)}{-\pi/2\leq\phi\leq\pi/2}{0}{\mbox{ else}}
 \end{equation}
 
-The SISO receiver optics comprises of an optical concentrator. Incorporating a concentrator helps increase the effective area of the sensor. This enables the receiver to incorporate a sensor with smaller dimensions thus reducing its capacitance and enabling a higher receiver bandwidth. Additionally sensor with smaller dimensions enables a compact form factor which can then enable its integration within portable devices. Let $\psi$ be the angle between the receiver surface normal ($\hat{\bf{z}}$) and the optical axis (\vm{d}). Let $\eta$ be the refractive index of the material of the concentrator and $\psi_{c}$ be the field of view of the concentrator. Then the optical concentrator gain is given by
+The SISO receiver optics comprises of an optical concentrator. Incorporating a concentrator helps increase the effective area of the sensor. This enables the receiver to incorporate a sensor with smaller dimensions thus reducing its capacitance and enabling a higher receiver bandwidth. Additionally sensor with smaller dimensions enables a compact form factor which can then enable its integration within portable devices. Let $\psi$ be the angle between the receiver surface normal ($\hat{\bf{z}}$) and the optical axis (\vm{d}). Let $\eta$ be the refractive index of the material of the concentrator and $\psi_{\text{c}}$ be the field of view of the concentrator. Then the optical concentrator gain is given by
 \begin{equation}
 	\label{eqOpGain}
-	G(\psi) = \twopartdef{\frac{\eta^{2}}{sin^{2}(\psi_{c})}} {0\leq\psi\leq\psi_{c}\leq\frac{\pi}{2}}{0}{\psi>\psi_{c}}
+	G(\psi) = \twopartdef{\frac{\eta^{2}}{sin^{2}(\psi_{\text{c}})}} {0\leq\psi\leq\psi_{\text{c}}\leq\frac{\pi}{2}}{0}{\psi>\psi_{\text{c}}}
 \end{equation}
 
 Let $S(\lambda)$ be the normalized SPD of the normalized emitted radiant flux such that area under curve is 1 W. Let $R(\lambda)$ be the responsivity of the PD. An optical filter can be incorporated within the receiver to provide selectivity to wavelengths of interest and reject unwanted optical radiation thus reducing noise. Depending on construction of optical filter, its transmittance is a function of angle of incidence and wavelength of radiation. Let the transmittance of the filter be given by $T(\psi,\lambda)$. Thus the effective responsivity of the receiver including the transmission and gains from all optical components is given by 
 \begin{equation}
 	\label{eqReff}
-	R_{e}(\psi) = G(\psi)\int^{\lambda_{max}}_{\lambda_{min}}S(\lambda)T(\psi,\lambda)R(\lambda)d\lambda
+	R_{\text{e}}(\psi) = G(\psi)\int^{\lambda_{\text{max}}}_{\lambda_{\text{min}}}S(\lambda)T(\psi,\lambda)R(\lambda)d\lambda
 \end{equation}
-where $\lambda_{min}$ to $\lambda_{max}$ span all the wavelengths of interest.
+where $\lambda_{\text{min}}$ to $\lambda_{\text{max}}$ span all the wavelengths of interest.
 
 Let $A$ be the active area of the PD. The overall channel gain $h$ is a function of the parameters discussed above and is then given by
 \begin{equation}
 	\label{eqChGain}
-	%h = L(\phi)\frac{A}{||{\bf{d}^{z}}||^{2}}cos(\psi)R_{e}(\psi) THIS IS WRONG 
-	h = L(\phi)\frac{A}{||{\bf{d}}||^{2}}cos(\psi)R_{e}(\psi)
+	%h = L(\phi)\frac{A}{||{\bf{d}^{z}}||^{2}}cos(\psi)R_{\text{e}}(\psi) THIS IS WRONG 
+	h = L(\phi)\frac{A}{||{\bf{d}}||^{2}}cos(\psi)R_{\text{e}}(\psi)
 \end{equation}
 
-Average flux incident on a PD introduces shot noise within the optical-to-electrical conversion process. In a typical SISO VLC link, shot noise from ambient illumination dominates over that from signal \cite{bar94a}. Let $q$ be the charge of an electron. Worst cast shot noise from isotropic ambient radiant flux $P_{a}(\lambda)$ is then given by
-\begin{equation}
-	\label{eqNshot}
-	\sigma_{sh}^{2} = \frac{2qAG(\psi_{c})}{\psi_{c}}\int_{\lambda_{min}}^{\lambda_{max}}\int_{0}^{\psi_{c}}P_{a}(\lambda)R(\lambda)T(\psi,\lambda)d\psi d\lambda
-\end{equation}
-Statistics of shot noise are typically Poisson in nature. For a large mean, a Poisson random variable can be approximated by a normal distribution with same variance. Thus, for the optical channel, shot noise is assumed to be distributed normally with variance $\sigma_{sh}^{2}$.
+Average flux incident on a PD introduces shot noise within the optical-to-electrical conversion process. In a typical SISO VLC link, shot noise from ambient illumination dominates over that from signal \cite{bar94a}. Let $q$ be the charge of an electron. Worst cast shot noise current density from isotropic ambient radiant flux $P_{\text{a}}(\lambda)$ is then given by
+\begin{align}
+	\sigma_{\text{sh}}^{2} &= 2q<I> \label{eqNshotGen}\\
+	\sigma_{\text{sh}}^{2} &= \frac{2qAG(\psi_{\text{c}})}{\psi_{\text{c}}}\int_{\lambda_{\text{min}}}^{\lambda_{\text{max}}}\int_{0}^{\psi_{\text{c}}}P_{\text{a}}(\lambda)R(\lambda)T(\psi,\lambda)d\psi d\lambda 	  \label{eqNshot}
+\end{align}
+$<I>$ is the average current. Statistics of shot noise are typically Poisson in nature. For a large mean, a Poisson random variable can be approximated by a normal distribution with same variance. Thus, for the optical channel, shot noise is assumed to be distributed normally with variance $\sigma_{\text{sh}}^{2}$.
 
-The TIA is generally the first current to voltage amplifier stage after the PD. In the absence of significant ambient illumination, the TIA noise is the dominant source of noise \cite{kah97a}. The thermal noise from the TIA is considered as the dominant electronic noise component and is given by \cite{kah97a},
+The TIA is generally the first current to voltage amplifier stage after the PD. In the absence of significant ambient illumination, the TIA noise is the dominant source of noise \cite{kah97a}. The thermal noise from the TIA is considered as the dominant electronic noise component. It is typically additive, white and Gaussian and its noise current density is given by \cite{kah97a},
 \begin{equation}
 	\label{eqNpa}
-	\sigma_{th}^{2} = \frac{4kT}{R_{f}}
+	\sigma_{\text{th}}^{2} = \frac{4kT}{R_{\text{f}}}
 \end{equation}
-where $k$ is the Boltzmann's constant, $T$ is the absolute temperature and $R_{f}$ is the feedback resistance of the TIA.
+where $k$ is the Boltzmann's constant, $T$ is the absolute temperature and $R_{\text{f}}$ is the feedback resistance of the TIA.
 % 5pa/rt(Hz)
 
-Thus the total noise current density can be computed from the shot noise current density and thermal noise current density. It is additive, white and Gaussian its variance is given by 
+Thus the total noise current density can be computed from the shot noise current density and thermal noise current density. It is modeled as additive, white and Gaussian and its variance is given by 
 \begin{equation}
 	\label{eqNoise}
-	\sigma_{n}^{2} = \sigma_{sh}^{2} + \sigma_{th}^{2}
+	\sigma_{\text{n}}^{2} = \sigma_{\text{sh}}^{2} + \sigma_{\text{th}}^{2}
 \end{equation}
 
-While $P_{avg}$ is the average transmitted radiant flux and let $B$ be the signal bandwidth. Using the parameters described above the SISO channel's SNR can be defined by Eq. \eqref{eqSisoSNR}.
+While $P_{\text{avg}}$ is the average transmitted radiant flux and let $B$ be the signal bandwidth. Using the parameters described above the SISO channel's SNR can be defined by Eq. \eqref{eqSisoSNR}.
 \begin{equation}
 	\label{eqSisoSNR}
-	\text{SNR} \triangleq \frac{(hP_{avg})^{2}}{\sigma_{n}^{2}B}
+	\text{SNR} \triangleq \frac{(hP_{\text{avg}})^{2}}{\sigma_{\text{n}}^{2}B}
 \end{equation}
 %Using Shannon's capacity formula for a AWGN baseband channel with a transmitter constrained to power $K$ independent of illumination and bandwidth $B$, the upper bound on capacity of the SISO VLC channel is given by \cite{sha48a}
 %\begin{equation}

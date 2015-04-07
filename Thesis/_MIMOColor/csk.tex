@@ -1,9 +1,9 @@
-\section{Color shift keying}
-\label{sec:csk}
+%\section{Color shift keying}
+%\label{sec:csk}
 \graphicspath{{_MIMOColor/figures_csk/}}
 
-\subsection{CSK system outline}
-\label{subsec:cskOutline}
+\section{CSK system outline}
+\label{sec:cskOutline}
 CSK is implemented in conjunction with IM/DD over the optical channel. This channel can be modeled as a linear time invariant system with AWGN and mathematically represented as in Eq.(\ref{eqCHNL})
 
 \begin{equation}
@@ -14,16 +14,16 @@ where \vm{X} is an $N_{\text{tx}}$ dimensional vector containing transmit optica
 
 In $M$-ary CSK, $N_{\text{tx}}=3$ types of LEDs are used to generate $M$ different SPDs corresponding to $M$ different chromaticity coordinates. Each chromaticity coordinate represents a codeword that encodes log$^{ }_{2}$($M$) bits. In order to transmit information, the luminaire irradiates an SPD corresponding to the desired transmit codeword. The clock rate at the luminaire is of the order of tens of MHz. This rate is much higher than which can be perceived by human eye as flicker. In addition, the CSK signaling chain can include a scrambler that ensures data and thus codewords are pseudo-randomly distributed thus mitigating color flicker.
 
-At the receiving elements, each SPD produces a different electrical response signal. The signal output from each receiving element is corrupted by shot noise of variance $\sigma^{2}_{\text{sh}}$ due to ambient light and thermal noise of variance $\sigma^{2}_{\text{th}}$ due to trans-impedance amplifier as shown in Eq.(\ref{eqNOISE})
+At the receiving elements, each SPD produces a different electrical response signal. The signal output from each receiving element is corrupted by shot noise of variance $\sigma^{2}_{\text{sh}}$ due to ambient light as in Eq. \eqref{eqNshotGen} and thermal noise of variance $\sigma^{2}_{\text{th}}$ due to trans-impedance amplifier as shown in Eq. \eqref{eqNpa}. The SNR can then be defined as in Eq.(\ref{eqSNR}).
 
-\begin{equation}
-	\begin{aligned}
-	\sigma^{2}_{\text{sh}} &= 2q<i>B\\
-	\sigma^{2}_{\text{th}} &= \frac{4k_{B}TB}{R_{f}}
-\end{aligned}
-\label{eqNOISE}
-\end{equation}
-where $<i>$ is average current generated in the photodiode due incident ambient light, $q$ is charge of an electron, $k_{B}$ is Boltzmann's constant, $T$ is the temperature in Kelvin and $R_{f}$ is the amplifier feedback resistance and B is the channel bandwidth. The signal-to-noise ratio (SNR) can then be defined as in Eq.(\ref{eqSNR})
+%%\begin{equation}
+	%\begin{aligned}
+	%\sigma^{2}_{\text{sh}} &= 2q<i>B\\
+	%\sigma^{2}_{\text{th}} &= \frac{4k_{B}TB}{R_{f}}
+%\end{aligned}
+%\label{eqNOISE}
+%\end{equation}
+%where $<i>$ is average current generated in the photodiode due incident ambient light, $q$ is charge of an electron, $k_{B}$ is Boltzmann's constant, $T$ is the temperature in Kelvin and $R_{f}$ is the amplifier feedback resistance and B is the channel bandwidth. 
 
 \begin{equation}
 	\text{SNR} \triangleq \frac{\text{Tr}\{\vm{H}\vm{X}\vm{X}^{*}\vm{H}^{*}\}}{\sigma^{2}_{\text{nt}}}
@@ -39,8 +39,8 @@ Having received vector \vm{Y}, least squares estimate of transmitted vector ($\h
 
 After estimating vector $\hat{\vm{X}}$, an estimate of transmitted chromaticity coordinates can be made and transmitted information can then be decoded. The process of transforming chromaticity coordinates to optical power and vice-versa gives rise to two different system models as described in further sections.
 
-\subsection{Linear system model}
-\label{subsec:cskLinear}
+\section{Linear system model}
+\label{sec:cskLinear}
 The linear CSK model treats the CIE-CS as a linear space to analyze CSK performance. This implies the inherent assumption that when irradiance from multiple transmitting elements is combined, the chromaticity coordinates of the resulting SPD is a linear combination of the chromaticity coordinates of the SPDs of individual transmitting elements. If P$_{n}$; $n\in$ \{i, j, k\} is the normalized radiant flux at the transmit or receive device associated with band $n$, Eq.(\ref{eqLIN}) below taken from the standard provides the implied mathematical relationships between chromaticity coordinates of all bands and that of resultant SPD.
 
 \begin{equation}
@@ -67,11 +67,10 @@ The linear CSK model treats the CIE-CS as a linear space to analyze CSK performa
 %\clearpage% Flush page
 %}
 
-A block diagram of the CSK signaling chain is shown in \figurename{ }\ref{figCSKBD}. At the transmitting element, the encoded information bit--stream is mapped to chromaticity coordinates ($x_{\text{p}}$, $y_{\text{p}}$) as computed from Table \ref{tMCSK}. Using Eq.(\ref{eqLIN}), normalized P$_{n}$ values are computed which are then scaled to achieve a user requested illumination target and thus transmit irradiance. A vector of scaled P$_{n}$ values then forms the transmit vector \vm{X}. Without loss of generality, unity E/O conversion at transmitter and unity responsivity (O/E conversion) at the receiver is assumed. Receiving element for band $n$ senses the incident flux and generates an electrical signal proportional to it. AWGN as computed from Eq.\eqref{eqNOISE} is then added to each band $n$ in the form of vector \vm{W}. The receiver output in presence of noise is represented by \vm{Y}. With the knowledge of the channel state and the receiver output, a least squares estimate of transmit vector $\hat{\vm{X}}$ is made using Eq.\eqref{eqXHAT}. Each element of $\hat{\vm{X}}$ then provides the estimates of transmitted flux represented by $\hat{\text{P}}_{n}$. Using these values, ($\hat{x}_{\text{p}}, \hat{y}_{\text{p}}$) are estimated using Eq.\eqref{eqLIN}. Nearest neighbor decoder then estimates the transmitted coordinate and recovers the transmitted information. Thus for the linear system model, Eq.\eqref{eqLIN} represents the ($x_{\text{p}}$, $y_{\text{p}}$) $\rightarrow  \text{P}_{n}$ and $\hat{\text{P}}_{n}\rightarrow$ ($\hat{x}_{\text{p}}$, $\hat{y}_{\text{p}}$) transformations for the red dashed blocks of \figurename{ }\ref{figCSKBD}.
+A block diagram of the CSK signaling chain is shown in \figurename{ }\ref{figCSKBD}. At the transmitting element, the encoded information bit--stream is mapped to chromaticity coordinates ($x_{\text{p}}$, $y_{\text{p}}$) as computed from Table \ref{tMCSK}. Using Eq.(\ref{eqLIN}), normalized P$_{n}$ values are computed which are then scaled to achieve a user requested illumination target and thus transmit irradiance. A vector of scaled P$_{n}$ values then forms the transmit vector \vm{X}. Without loss of generality, unity E/O conversion at transmitter and unity responsivity (O/E conversion) at the receiver is assumed. Receiving element for band $n$ senses the incident flux and generates an electrical signal proportional to it. AWGN is then added to each band $n$ in the form of vector \vm{W}. The receiver output in presence of noise is represented by \vm{Y}. With the knowledge of the channel state and the receiver output, a least squares estimate of transmit vector $\hat{\vm{X}}$ is made using Eq.\eqref{eqXHAT}. Each element of $\hat{\vm{X}}$ then provides the estimates of transmitted flux represented by $\hat{\text{P}}_{n}$. Using these values, ($\hat{x}_{\text{p}}, \hat{y}_{\text{p}}$) are estimated using Eq.\eqref{eqLIN}. NN decoder then estimates the transmitted coordinate and recovers the transmitted information. Thus for the linear system model, Eq.\eqref{eqLIN} represents the ($x_{\text{p}}$, $y_{\text{p}}$) $\rightarrow  \text{P}_{n}$ and $\hat{\text{P}}_{n}\rightarrow$ ($\hat{x}_{\text{p}}$, $\hat{y}_{\text{p}}$) transformations for the red dashed blocks of \figurename{ }\ref{figCSKBD}.
 %In this case the channel matrix \vm{H} is $N_{\text{rx}}\times N_{\text{tx}}$ dimensional identity matrix ($N_{\text{rx}}=N_{\text{tx}} = 3$).
 
-Monte-carlo simulations are performed to compute performance of $M$-ary CSK under the linear model for all CBC$_{v}$ and \figurename{ }\ref{figBERvsSNR} shows the results. Performance of all CBCs is similar except CBC$_{7}$ and CBC$_{9}$ which perform slightly worse, but only by a margin of about 0.6 dB. This performance is as expected. As seen from Table \ref{tCBC}, CBC$_{7}$ is composed of CB$_{3}$, CB$_{2}$ and CB$_{0}$ whereas and CBC$_{9}$ is composed of CB$_{2}$, CB$_{1}$ and CB$_{0}$. Thus from values in Table \ref{tCB} and \figurename{ }\ref{figCBCcenters}, it can be seen that constellation points for other CBCs are the most spread out and have the large minimum distance between constellation points where as that for CBC$_{7}$ and CBC$_{9}$ have the shorter spread and have the smaller minimum distance between constellation points. SNR of at least 15 dB, 20 dB and 25 dB are needed to achieve a target minimum bit error rate (BER) of $10^{-3}$ under the linear model for $M$ = 4, 8 and 16 CSK respectively.
-
+Monte-carlo simulations are performed to compute performance of $M$-ary CSK under the linear model for all CBC$_{v}$ and \figurename{ }\ref{figBERvsSNR} shows the results. Performance of all CBCs is similar except CBC$_{7}$ and CBC$_{9}$ which perform slightly worse, but only by a margin of about 0.6 dB. This performance is as expected. As seen from Table \ref{tCBC}, CBC$_{7}$ is composed of CB$_{3}$, CB$_{2}$ and CB$_{0}$ whereas and CBC$_{9}$ is composed of CB$_{2}$, CB$_{1}$ and CB$_{0}$. Thus from values in Table \ref{tCB} and \figurename{ }\ref{figCBCcenters}, it can be seen that constellation points for other CBCs are the most spread out and have the large minimum distance between constellation points where as that for CBC$_{7}$ and CBC$_{9}$ have the shorter spread and have the smaller minimum distance between constellation points. SNR of at least 15 dB, 20 dB and 25 dB are needed to achieve a target minimum BER of $10^{-3}$ under the linear model for $M$ = 4, 8 and 16 CSK respectively.
 %\afterpage{%
 %\clearpage
 %\begin{landscape}% Landscape page
@@ -107,6 +106,7 @@ Monte-carlo simulations are performed to compute performance of $M$-ary CSK unde
 %\clearpage% Flush page
 %}
 
+\figurename{ \ref{figRcvSym}} shows received symbols for CBC$_{2}$, whose constellation points are the most spread out, under the linear model. As expected, noise is spread normally along x and y dimensions forming a circular envelop around all constellation points. For $M$ = 8 and $M$ = 16, empty non-interfering regions devoid of received symbols can be seen in the figures. This indicates that these constellations could be better packed by defining additional points in the non-interfering regions. The constellations can then be further optimized to achieve better spectral efficiency. Note that in \figurename{ \ref{figRcvSym}} (\subref{fig4RcvSym}), (\subref{fig8RcvSym}) and (\subref{fig16RcvSym}), some of the received symbols are located outside the color gamut (triangle IJK as outlined in \figurename{ }\ref{figConst}) formed by the sources for i, j and k bands. This would appear to violate the relationships on the CIE-CS model between coordinates of SPDs of individual sources and that of the resultant SPD formed by mixing the fluxes in different ratios. However, at the receiver, the received signals are influenced by noise (bipolar, zero-mean Gaussian) resulting in bipolar received values. Received signals with negative values when mapped back to the CIE-CS, can cause received `noisy' symbols to lie outside of the gamut.
 \afterpage{%
 \clearpage
 \begin{landscape}% Landscape page
@@ -162,14 +162,6 @@ Monte-carlo simulations are performed to compute performance of $M$-ary CSK unde
 \clearpage% Flush page
 }
 
-\figurename{ \ref{figRcvSym}} shows received symbols for CBC$_{2}$, whose constellation points are the most spread out, under the linear model. As expected, noise is spread normally along x and y dimensions forming a circular envelop around all constellation points. For $M$ = 8 and $M$ = 16, empty non-interfering regions devoid of received symbols can be seen in the figures. This indicates that these constellations could be better packed by defining additional points in the non-interfering regions. The constellations can then be further optimized to achieve better spectral efficiency. Note that in \figurename{ }\ref{figRcvSym} (\subref{fig4RcvSym}),
-(\subref{fig8RcvSym}) and (\subref{fig16RcvSym}), some of the received
-symbols are located outside the color gamut (triangle IJK
-as outlined in \figurename{ }\ref{figConst}) formed by the sources for
-i, j and k bands. This would appear to violate the relationships on the CIE-CS model between coordinates of SPDs of individual sources and that of the resultant SPD formed by mixing the fluxes in different ratios. However, at the receiver, the
-received signals are influenced by noise (bipolar, zero-mean Gaussian)
-resulting in bipolar received values. Received signals with negative values when mapped back to the CIE-CS, can cause received `noisy' symbols to lie outside of the gamut.
-
 Since the transmitted radiant fluxes are always non-negative, it is possible to clip the receiver output prior to estimating the transmitted
 radiant flux.  When negative receiver output is clipped at zero, estimated
 symbols are illustrated in
@@ -186,8 +178,8 @@ which significantly alters the $M$-ary CSK performance for a practical
 implementation. The effects of these practical constraints on a CSK
 system are studied in next few sub-sections.
 %%%%%%%%%%%%%%%%%%%  Non-linear Model  %%%%%%%%%%%%%%%%%%%%%
-\subsection{Non-linear system model}
-\label{subsec:cskNonlinear}
+\section{Non-linear system model}
+\label{sec:cskNonlinear}
 To understand the source of non-linearity in the CSK system, let's take a look at the CIE-CS which empirically models the human eye's visual perception of color for a stimulating SPD. Let $S_{n}(\lambda)$ be the SPDs of the transmit LEDs and P$_{n}$ be the radiant flux associated with band $n$. Thus the aggregate transmitted SPD is given by Eq.\eqref{eqWLDA}.
 
 \begin{equation}
@@ -206,9 +198,9 @@ CIE-CS specification outlines three color matching functions - $x_{c}(\lambda)$,
 
 \begin{equation}
 	\begin{aligned}
-		X_{W} &= \int\limits_{\lambda\text{ = 380 nm}}^{\lambda\text{ = 780 nm}}W(\lambda)x_{c}(\lambda)d\lambda\\
-		Y_{W} &= \int\limits_{\lambda\text{ = 380 nm}}^{\lambda\text{ = 780 nm}}W(\lambda)y_{c}(\lambda)d\lambda\\
-		Z_{W} &= \int\limits_{\lambda\text{ = 380 nm}}^{\lambda\text{ = 780 nm}}W(\lambda)z_{c}(\lambda)d\lambda
+		X_{W} &= \int\limits_{\lambda\text{ = 380 nm}}^{\lambda\text{ = 780 nm}}W(\lambda)x_{\text{c}}(\lambda)d\lambda\\
+		Y_{W} &= \int\limits_{\lambda\text{ = 380 nm}}^{\lambda\text{ = 780 nm}}W(\lambda)y_{\text{c}}(\lambda)d\lambda\\
+		Z_{W} &= \int\limits_{\lambda\text{ = 380 nm}}^{\lambda\text{ = 780 nm}}W(\lambda)z_{\text{c}}(\lambda)d\lambda
 	\end{aligned}
 	\label{eqTXYZ}
 \end{equation}
@@ -373,11 +365,11 @@ As outlined in prior sections, $M$-ary CSK modulation transmits information by v
 \figurename{ }\ref{figRcvSym_NL} and \figurename{ }\ref{figRcvSym_NL_Y0} show received symbols for CBC$_{1}$ and CBC$_{8}$ under the non-linear model. Noise skew about the estimated coordinates can be observed in both figures. This noise skew is more prominent for CBC$_{1}$ where the signal power distribution along all bands is imbalanced. In contrast for CBC$_{8}$, signal power is more uniformly spread across all bands. For \figurename{ }\ref{figRcvSym_NL}, the negative receiver output is not clipped at zero. As mentioned earlier, in presence of noise (zero mean and Gaussian), some receiver output values can be negative and thus such received symbols are located outside the color gamut when transformed to CIE-CS space. The effect of clipping negative receiver output at zero can be seen in \figurename{ }\ref{figRcvSym_NL_Y0} where all received symbols now are located inside the color gamut. It can be seen that performance of both receiver signal processing techniques is similar, as such no one outperforms the other. It can be seen that AWGN introduced on $\hat{\text{P}}_{n}$ gets skewed radially towards band k due to non-linearity in $\hat{\text{P}}_{n}\rightarrow$ ($\hat{x}_{\text{p}}$, $\hat{y}_{\text{p}}$) transformation and is no longer AWGN along the CIE-CS chromaticity plane. This generates an interesting outcome in that for CBC$_{8}$, about 30 dB of SNR is needed to achieve target $10^{-3}$ BER for all of $M$ = 4, 8 and 16 CSK. This happens because with increase in order $M$, the additional constellation points as defined in the standard happen to occupy non-interfering regions of the chromaticity plane thus increasing spectral efficiency without incurring any SNR penalty up to a point. The non-linearity of the CIE-CS introduces performance penalties of at least 15 dB, 10 dB and 5 dB for $M$ = 4, 8 and 16 CSK respectively over the linear system model. 
 
 %%%%%%%%%%%%%%%%%%%%%  Illumination  %%%%%%%%%%%%%%%%%%%%%%%
-\subsection{CSK system performance under illumination constraints}
-\label{subsec:cskIllumination}
+\section{CSK system performance under illumination constraints}
+\label{sec:cskIllumination}
 
 %%%%%%%%%%%%  Luminous Signal to Noise Ratio  %%%%%%%%%%%%%%
-%\subsection{Luminous-signal-to-noise ratio}\label{ssLSNR}
+%\section{Luminous-signal-to-noise ratio}\label{ssLSNR}
 In an indoor optical wireless system using lighting devices for wireless downlink access the luminaires need to simultaneously service illumination and optical wireless broadcast missions. Under this model, different colored PHY (example: different CBC$_{v}$) irradiate different amounts of radiant flux to achieve the same illumination intensity level. Thus, it is unfair to use SNR as a metric to compare performance of modulation schemes at same BER target using different colored PHY without first normalizing for illumination targets. Thus, in this section we introduce LSNR as a metric that takes into account the differences in radiant flux emitted by different PHY to achieve the same illumination intensity level. It should be noted that the LSNR metric is not specific to CSK, but instead can be used more generally to compare performance of any two optical modulation schemes that are operated at the same optical intensity levels.
 
 Consider optical modulation scheme(s) which can be implemented with two different constellations C$_{\text{a}}$ or C$_{\text{b}}$. The fluxes emitted by the two constellations are scaled to achieve a target illumination intensity level. Let both constellations on average emit I lumens of luminous flux. Let the luminous efficacy for the two constellations be specified by $\eta_{\text{a}}$ and $\eta_{\text{b}}$ in lumens-per-watt respectively. Then the corresponding average radiant flux emitted by the two constellations is given by W$_{\text{a}}$ = I/$\eta_{\text{a}}$ and W$_{\text{b}}$  = I/$\eta_{\text{b}}$ watts respectively. Let us define a luminous ratio L$_{\text{ab}}\triangleq$ ($\eta_{\text{a}}/\eta_{\text{b}}$) $\equiv$ (W$_{\text{b}}$/W$_{\text{a}}$). Thus, for every 1 Watt of radiant flux emitted by C$_{\text{a}}$, C$_{\text{b}}$ must emit L$_{\text{ab}}$ Watt of radiant flux to achieve the same illumination intensity level. Under the model where the luminaires service illumination along with communication, it is fair to compare the performance of the two schemes at these relative radiant flux levels instead of at the absolute radiant flux levels. Thus we define the LSNR metric in Eq.\eqref{eqLSNR} as a means to compare performance of C$_{\text{b}}$ versus that of C$_{\text{a}}$ at same illumination levels. 
@@ -428,6 +420,14 @@ Consider optical modulation scheme(s) which can be implemented with two differen
 where \vm{X}$_{\text{b}}$ is the average radiant flux emitted by C$_{\text{b}}$. Thus, after computing BER vs SNR for the scheme employing C$_{\text{a}}$, BER vs LSNR can be computed for scheme employing C$_{\text{b}}$ to compare its performance relative to that employing C$_{\text{a}}$ at the same illumination levels.
 
 %%%%%%%%%%%%%%%%%%%%%  Illumination  %%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Performance under illumination constraints}\label{ssCSKLSNR}
+%\section{Performance under illumination constraints}\label{ssCSKLSNR}
 
-\figurename{ }\ref{figBERvsLSNR} shows performance of the 9 CBCs under the non-linear model when normalized for illumination constraints. The efficacies of all CBC for different $M$ are specified in the legends. These values are used to normalize the performance of $M$-ary CSK for all CBC using CBC with highest efficacy as the reference for LSNR calculation. CBC$_{7}$, CBC$_{9}$ and CBC$_{9}$ are used as reference CBCs for $M$ = 4, 8 and 16 CSK respectively. The effect of this is to shift all curves (except the reference) from \figurename{ }\ref{figBERvsSNR_NL} towards left along the LSNR-axis depending on the L$_{\text{ab}}$ values in Eq.\eqref{eqLSNR}. It can be observed that given a target illumination intensity level and for target 10$^{-3}$ BER, CBC$_{6}$ performs the best for 4-CSK, CBC$_{7}$ and CBC$_{8}$ perform similar and better than others for 8-CSK and CBC$_{8}$ performs the best for 16-CSK. For CBC$_{1}$-CBC$_{4}$, due to their low luminous efficacy, one can use a much larger radiant flux to achieve target illumination levels and thus significantly improve their communication performance. However, this is achieved at the cost of poor energy efficiency. In contrast, CBC$_{7}$ and CBC$_{9}$ have relatively high luminous efficacy. This implies that these CBCs are restricted to emit a relatively lower radiant flux (and thus low signal powers) to achieve target illumination level thus affecting their communication performance. These results also highlight the necessary tradeoff between goals of energy efficient lighting and good communication performance; thus making a case for an optimization between the two divergent goals.
+\figurename{ }\ref{figBERvsLSNR} shows performance of the 9 CBCs under the non-linear model when normalized for illumination constraints. The efficacies of all CBC for different $M$ are specified in the legends. These values are used to normalize the performance of $M$-ary CSK for all CBC using CBC with highest efficacy as the reference for LSNR calculation. CBC$_{7}$, CBC$_{9}$ and CBC$_{9}$ are used as reference CBCs for $M$ = 4, 8 and 16 CSK respectively. The effect of this is to shift all curves (except the reference) from \figurename{ }\ref{figBERvsSNR_NL} towards left along the LSNR-axis depending on the L$_{\text{ab}}$ values in Eq.\eqref{eqLSNR}. It can be observed that given a target illumination intensity level and for target 10$^{-3}$ BER, CBC$_{6}$ performs the best for 4-CSK, CBC$_{7}$ and CBC$_{8}$ perform similar and better than others for 8-CSK and CBC$_{8}$ performs the best for 16-CSK. For CBC$_{1}$-CBC$_{4}$, due to their low luminous efficacy, one can use a much larger radiant flux to achieve target illumination levels and thus significantly improve their communication performance. However, this is achieved at the cost of poor energy efficiency. In contrast, CBC$_{7}$ and CBC$_{9}$ have relatively high luminous efficacy. This implies that these CBCs are restricted to emit a relatively lower radiant flux (and thus low signal powers) to achieve target illumination level thus affecting their communication performance. 
+%These results also highlight the necessary tradeoff between goals of energy efficient lighting and good communication performance; thus making a case for an optimization between the two divergent goals.
+
+%% conclusion %%
+In conclusion, this chapter studies the performance of all CBCs as specified for $M$-ary CSK in the IEEE 802.15.7 standard. Under the linear system model, all CBCs perform relatively well and need SNR of at least 15 dB, 20 dB and 25 dB to achieve target BER of $10^{-3}$ for $M$ = 4, 8 and 16 CSK respectively. The non-linear system model is then considered due to the unique non-linear visual perception characteristics of human eye. It is shown that the non-linearity of the CIE-CS causes the AWGN introduced to the received signal to get skewed and no longer remain AWGN when transformed to the chromaticity plane. Under the non-linear system model, CBC$_{7}$ and CBC$_{8}$ perform relatively similar and are better that all other CBCs. A performance penalty of at least 15 dB, 10 dB and 5 dB incurred for the practical non-linear model as compared to linear model for $M$ = 4, 8 and 16 CSK respectively. A new LSNR metric is proposed to compare performance of any two schemes (and not just CSK) using the visible spectrum for wireless communication and lighting after normalizing signal powers to achieve a target illumination intensity level. Performance comparisons of $M$-ary CSK for all CBCs then reveal that CBC $_{6}$ performs the best for 4-CSK, CBC$_{7}$ and CBC$_{8}$ perform similar and better than others for 8-CSK and CBC$_{8}$ performs the best for 16-CSK. 
+
+For IM/DD signaling scheme, the receiver output is always expected to be non-negative in absence of noise. For some O-OFDM systems, clipping negative receiver output has been shown to improve performance by eliminating some noise. On the contrary, for $M$-ary CSK, the performance in presence or absence of clipping the negative receiver output does not seem to differ significantly. This does not imply that noise in the negative receiver output is orthogonal to signal itself. The negative receiver output pushes the received symbol outside the color gamut on the CIE-CS. In the presence of relatively high SNR, the received symbol is still located closer to the expected constellation point thus does not introduce any additional errors.
+
+Optimal performance of CSK can be seen as a tradeoff between the illumination and communication missions. There is further scope to optimize the $M$-ary CSK constellations under the practical non-linear model by selecting optical sources centered at different wavelengths than those considered in the standard. After characterizing skew for AWGN along the chromaticity plane, constellation points can be optimally positioned and optimal receiver architectures can be introduced to further improve the $M$- ary CSK performance.
